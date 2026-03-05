@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI + MuleSoft Enterprise Training &#8212; Master Reference 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0b0d14;--surface:#12141f;--surface2:#1a1d2e;--border:#252840;--text:#cdd0e3;--text-muted:#6b6f8a;--text-bright:#eef0f8;--accent-teal:#00d4b8;--accent-amber:#f59e0b;--accent-blue:#4f8ef7;--accent-purple:#a78bfa;--accent-rose:#f87171;--accent-green:#4ade80;--phase1:#4f8ef7;--phase2:#00d4b8;--phase3:#a78bfa;--phase4:#f59e0b;--code-bg:#080a10;--sidebar-w:284px}
+[data-theme="light"]{--bg:#f4f5fa;--surface:#fff;--surface2:#eef0f8;--border:#d4d7e8;--text:#374151;--text-muted:#9ca3af;--text-bright:#111827;--code-bg:#1e2130}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Lora',Georgia,serif;font-size:15.5px;line-height:1.75;display:flex;min-height:100vh;overflow-x:hidden;transition:background .25s,color .25s}
+#pb{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent-teal),var(--accent-purple));width:0%;z-index:1000;pointer-events:none}
+#sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;z-index:500;scrollbar-width:thin;scrollbar-color:var(--border) transparent;transition:transform .3s,background .25s}
+#sidebar::-webkit-scrollbar{width:4px}#sidebar::-webkit-scrollbar-thumb{background:var(--border)}
+.sh{padding:18px 15px 12px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:10}
+.st{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
+.sh h1{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-teal)}
+.sh p{font-size:10px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;margin-top:2px}
+#tt{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 8px;cursor:pointer;font-size:14px;transition:all .2s}
+#tt:hover{border-color:var(--accent-teal)}
+#si{width:100%;padding:7px 10px;margin-top:10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;outline:none;transition:border-color .2s}
+#si:focus{border-color:var(--accent-teal)}#si::placeholder{color:var(--text-muted)}
+.hint{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);margin-top:4px;display:flex;gap:8px}
+.hint kbd{background:var(--surface2);border:1px solid var(--border);border-radius:3px;padding:0 4px;font-size:9px}
+.gb{margin:8px 14px;display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;cursor:pointer;font-family:'Syne',sans-serif;font-size:11px;font-weight:600;color:var(--text-muted);transition:all .2s;text-transform:uppercase;letter-spacing:.08em}
+.gb:hover{border-color:var(--accent-purple);color:var(--accent-purple)}
+.sp{padding:12px 15px 4px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+.p1c{color:var(--phase1)}.p2c{color:var(--phase2)}.p3c{color:var(--phase3)}.p4c{color:var(--phase4)}.p5c{color:var(--accent-rose)}
+.sl{display:flex;align-items:center;gap:8px;padding:6px 15px;text-decoration:none;color:var(--text-muted);font-size:12px;font-family:'Syne',sans-serif;transition:all .15s;border-left:2px solid transparent;cursor:pointer}
+.sl:hover{color:var(--text-bright);background:var(--surface2)}.sl.active{color:var(--text-bright);border-left-color:var(--accent-teal);background:var(--surface2)}
+.sl.done{color:var(--accent-green)}.sl.done::after{content:"\2713";margin-left:auto;font-size:10px}
+.db{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);background:var(--bg);padding:1px 5px;border-radius:3px;flex-shrink:0}
+.spr{padding:14px 15px;border-top:1px solid var(--border);margin-top:8px}
+.spr p{font-size:10px;color:var(--text-muted);font-family:'Syne',sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.pt{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.pf{height:100%;background:linear-gradient(90deg,var(--accent-teal),var(--accent-purple));border-radius:2px;transition:width .4s}
+.pl{font-size:11px;color:var(--accent-teal);font-family:'JetBrains Mono',monospace;margin-top:4px}
+#hb{display:none;position:fixed;top:12px;left:12px;z-index:600;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 10px;cursor:pointer;font-size:18px;color:var(--text)}
+#so{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:490;backdrop-filter:blur(2px)}
+#main{margin-left:var(--sidebar-w);flex:1;padding:0 52px 120px;max-width:calc(100% - var(--sidebar-w))}
+.hero{padding:72px 0 52px;border-bottom:1px solid var(--border);margin-bottom:56px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-100px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(79,142,247,.07),transparent 70%);pointer-events:none}
+.ey{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-teal);letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font-family:'Syne',sans-serif;font-size:46px;font-weight:800;line-height:1.1;color:var(--text-bright);max-width:660px;margin-bottom:18px}
+.hero h1 span{color:var(--accent-teal)}
+.hd{font-size:16px;color:var(--text-muted);max-width:540px;line-height:1.7;margin-bottom:28px}
+.hs{display:flex;gap:28px;flex-wrap:wrap}
+.stt{display:flex;flex-direction:column}
+.sn{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--text-bright)}
+.sl2{font-size:11px;color:var(--text-muted);font-family:'JetBrains Mono',monospace}
+.kh{margin-top:16px;display:flex;gap:16px;flex-wrap:wrap}
+.ki{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:4px}
+.ki kbd{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1px 6px}
+.pb2{margin-bottom:64px}
+.ph{display:flex;align-items:center;gap:14px;margin-bottom:36px;padding:18px 0;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:100;transition:background .25s}
+.pp{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:4px 12px;border-radius:20px;border:1px solid}
+.pp.p1{color:var(--phase1);border-color:var(--phase1);background:rgba(79,142,247,.08)}.pp.p2{color:var(--phase2);border-color:var(--phase2);background:rgba(0,212,184,.08)}.pp.p3{color:var(--phase3);border-color:var(--phase3);background:rgba(167,139,250,.08)}.pp.p4{color:var(--phase4);border-color:var(--phase4);background:rgba(245,158,11,.08)}.pp.p5{color:var(--accent-rose);border-color:var(--accent-rose);background:rgba(248,113,113,.08)}
+.ptitle{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--text-bright)}
+.pdys{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-muted);margin-left:auto}
+.ds{margin-bottom:52px;scroll-margin-top:88px}
+.ds.completed .dt{opacity:.6}
+.dh{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.dm{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.dn{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);background:var(--surface2);padding:3px 8px;border-radius:4px;border:1px solid var(--border)}
+.dt{font-family:'Syne',sans-serif;font-size:19px;font-weight:700;color:var(--text-bright);flex:1;transition:opacity .2s}
+.rt{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);background:var(--surface2);padding:2px 8px;border-radius:10px;border:1px solid var(--border)}
+.dc{display:flex;align-items:center;gap:6px;font-family:'Syne',sans-serif;font-size:11px;color:var(--text-muted);cursor:pointer;user-select:none;transition:color .2s}
+.dc:hover{color:var(--accent-teal)}.dc input{accent-color:var(--accent-teal);width:14px;height:14px;cursor:pointer}
+.dc.completed{color:var(--accent-green);font-weight:600}
+.cb2{display:none;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(74,222,128,.12);color:var(--accent-green);border:1px solid rgba(74,222,128,.3);padding:2px 10px;border-radius:10px}
+.ds.completed .cb2{display:inline-block}
+.tc{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:14px;overflow:hidden;transition:border-color .2s,background .25s}
+.tc:hover{border-color:#353860}
+.tch{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;user-select:none}
+.tn{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-amber);background:rgba(245,158,11,.1);padding:2px 7px;border-radius:3px;flex-shrink:0}
+.tname{font-family:'Syne',sans-serif;font-size:14.5px;font-weight:600;color:var(--text-bright);flex:1}
+.ta2{display:flex;align-items:center;gap:6px}
+.nb{font-size:14px;background:transparent;border:none;cursor:pointer;opacity:.4;transition:opacity .2s;padding:2px}
+.nb:hover,.nb.has-note{opacity:1}.nb.has-note{color:var(--accent-amber)}
+.tg{font-size:12px;color:var(--text-muted);transition:transform .25s;flex-shrink:0}
+.tc.open .tg{transform:rotate(180deg)}
+.tb{display:none;padding:0 18px 18px;border-top:1px solid var(--border);animation:fi .18s ease}
+.tc.open .tb{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.tb h4{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin:18px 0 8px}
+.tb p{color:var(--text);margin-bottom:10px}
+.tb ul{list-style:none;padding:0}
+.tb ul li{padding:3px 0 3px 16px;position:relative;color:var(--text)}
+.tb ul li::before{content:"\2014";position:absolute;left:0;color:var(--accent-teal);font-size:12px}
+.na{display:none;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:6px;margin:12px 0;padding:2px}
+.na.open{display:block}
+.nt{width:100%;min-height:80px;padding:10px 12px;background:transparent;border:none;outline:none;color:var(--text);font-family:'Lora',serif;font-size:14px;line-height:1.6;resize:vertical}
+.nt::placeholder{color:var(--text-muted);font-style:italic}
+.nf{display:flex;align-items:center;justify-content:space-between;padding:4px 10px 6px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted)}
+.b25{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;background:rgba(167,139,250,.15);color:var(--accent-purple);border:1px solid rgba(167,139,250,.3);padding:1px 7px;border-radius:10px;margin-left:6px;vertical-align:middle}
+.bnew{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;background:rgba(248,113,113,.15);color:var(--accent-rose);border:1px solid rgba(248,113,113,.3);padding:1px 7px;border-radius:10px;margin-left:6px;vertical-align:middle}
+.cb3{background:var(--code-bg);border:1px solid var(--border);border-radius:8px;margin:12px 0;overflow:hidden}
+.cbh{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border)}
+.cl{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-teal)}
+.cpb{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);background:transparent;border:1px solid var(--border);border-radius:4px;padding:2px 8px;cursor:pointer;transition:all .15s}
+.cpb:hover{color:var(--text-bright);border-color:var(--accent-teal)}
+.cb3 pre{padding:14px 12px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.65;color:#a8b3cf}
+.kw{color:#80aaff}.str{color:#a8e6a3}.num{color:#ffb86c}.cm{color:#555f7a;font-style:italic}.key{color:#f1c27d}
+.fm{background:var(--surface2);border-left:3px solid var(--accent-teal);padding:10px 14px;border-radius:0 6px 6px 0;margin:10px 0;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent-teal)}
+.rl{display:inline-flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-blue);text-decoration:none;background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.2);padding:3px 9px;border-radius:4px;margin:3px 3px 3px 0;transition:all .15s}
+.rl:hover{background:rgba(79,142,247,.15);color:#80b4ff}
+.rr{margin-top:14px;display:flex;flex-wrap:wrap;gap:4px}
+.ad{background:var(--code-bg);border:1px solid var(--border);border-radius:8px;padding:20px;margin:12px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.8;color:#a8b3cf;white-space:pre;overflow-x:auto}
+.co{border-radius:8px;padding:12px 16px;margin:12px 0;font-size:14px}
+.co.info{background:rgba(79,142,247,.08);border-left:3px solid var(--phase1)}
+.co.tip{background:rgba(0,212,184,.08);border-left:3px solid var(--accent-teal)}
+.co.warn{background:rgba(248,113,113,.08);border-left:3px solid var(--accent-rose)}
+.co.update{background:rgba(167,139,250,.08);border-left:3px solid var(--accent-purple)}
+.co.sec{background:rgba(248,113,113,.05);border:1px solid rgba(248,113,113,.2);border-left:3px solid var(--accent-rose)}
+.co strong{font-family:'Syne',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.dtbl{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+.dtbl th{background:var(--surface2);color:var(--text-bright);font-family:'Syne',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.dtbl td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top}
+.dtbl tr:last-child td{border-bottom:none}.dtbl tr:hover td{background:var(--surface2)}
+.qs{background:var(--surface2);border:1px solid var(--border);border-radius:10px;margin-top:16px;overflow:hidden}
+.qsh{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;cursor:pointer;user-select:none}
+.qsl{display:flex;align-items:center;gap:8px}
+.ql{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-purple)}
+.qc{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);background:var(--bg);padding:1px 6px;border-radius:3px}
+.qtb2{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:3px 10px;cursor:pointer;transition:all .15s}
+.qtb2:hover{border-color:var(--accent-purple);color:var(--accent-purple)}
+.qb{display:none;padding:0 16px 16px}
+.qs.open .qb{display:block}
+.qq{margin-bottom:16px}
+.qqu{font-family:'Syne',sans-serif;font-size:13.5px;font-weight:600;color:var(--text-bright);margin-bottom:8px;display:flex;align-items:flex-start;gap:8px}
+.qn{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-purple);background:rgba(167,139,250,.12);padding:1px 6px;border-radius:3px;flex-shrink:0;margin-top:2px}
+.rb{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);background:transparent;border:1px dashed var(--border);border-radius:4px;padding:4px 12px;cursor:pointer;transition:all .15s;width:100%;text-align:left}
+.rb:hover{border-color:var(--accent-purple);color:var(--accent-purple)}
+.qa{display:none;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 14px;margin-top:6px;font-size:14px;color:var(--text);line-height:1.65;animation:fi .15s ease}
+.qa.visible{display:block}
+.qa strong{color:var(--accent-teal);font-family:'Syne',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:4px}
+#gp{position:fixed;top:0;right:-460px;bottom:0;width:460px;background:var(--surface);border-left:1px solid var(--border);z-index:700;overflow-y:auto;transition:right .3s cubic-bezier(.4,0,.2,1)}
+#gp.open{right:0}
+.ghdr{padding:20px 20px 16px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:10;display:flex;align-items:center;justify-content:space-between}
+.ghdr h2{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--text-bright)}
+.gc{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-muted);transition:all .15s}
+.gc:hover{border-color:var(--accent-rose);color:var(--accent-rose)}
+.gs{padding:16px 20px;border-bottom:1px solid var(--border)}
+.gs h3{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px}
+.gi{margin-bottom:14px}
+.gtr{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--accent-amber);margin-bottom:3px}
+.gd{font-size:13px;color:var(--text);line-height:1.6}
+.gf{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--accent-teal);background:var(--surface2);padding:6px 10px;border-radius:4px;margin-top:4px;border-left:2px solid var(--accent-teal)}
+#go{display:none;position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:690}
+#bt{position:fixed;bottom:28px;right:28px;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);padding:8px 12px;border-radius:8px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:12px;transition:all .2s;z-index:200;opacity:0;pointer-events:none}
+#bt.visible{opacity:1;pointer-events:all}#bt:hover{border-color:var(--accent-teal);color:var(--accent-teal)}
+#nr{display:none;text-align:center;padding:48px 24px;font-family:'Syne',sans-serif;color:var(--text-muted)}
+mark.sm{background:rgba(245,158,11,.3);color:var(--accent-amber);border-radius:2px;padding:0 1px}
+::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+@media(max-width:900px){:root{--sidebar-w:0px}#sidebar{transform:translateX(-284px);width:284px}#sidebar.mobile-open{transform:translateX(0)}#so.visible{display:block}#hb{display:flex;align-items:center;justify-content:center}#main{margin-left:0;padding:56px 20px 80px;max-width:100%}.hero h1{font-size:32px}#gp{width:100%;right:-100%}}
+</style>
+</head>
+<body>
+<div id="pb"></div>
+<button id="hb" onclick="TS()">&#9776;</button>
+<div id="so" onclick="CS()"></div>
+
+<nav id="sidebar">
+<div class="sh"><div class="st"><div><h1>AI + MuleSoft</h1><p>Enterprise Training // 30 Days</p></div><button id="tt" onclick="TH()" title="Toggle theme">&#127763;</button></div>
+<input type="text" id="si" placeholder="Search topics... ( / )" autocomplete="off"/>
+<div class="hint"><span><kbd>/</kbd> Search</span><span><kbd>Esc</kbd> Clear</span><span><kbd>J/K</kbd> Nav</span><span><kbd>G</kbd> Glossary</span></div></div>
+<button class="gb" onclick="OG()">&#128218; Quick Reference Glossary</button>
+<div class="sp p1c">Phase 1 &#8212; AI Foundations</div>
+<a class="sl" href="#day1" data-day="1"><span class="db">D01</span>What AI Really Is</a>
+<a class="sl" href="#day2" data-day="2"><span class="db">D02</span>Transformer Architecture</a>
+<a class="sl" href="#day3" data-day="3"><span class="db">D03</span>Tokenization &amp; Context</a>
+<a class="sl" href="#day4" data-day="4"><span class="db">D04</span>Sampling &amp; Hallucination</a>
+<a class="sl" href="#day5" data-day="5"><span class="db">D05</span>Prompt Engineering</a>
+<a class="sl" href="#day6" data-day="6"><span class="db">D06</span>AI Risks &amp; Governance</a>
+<a class="sl" href="#day7" data-day="7"><span class="db">D07</span>Architecture Reflection</a>
+<div class="sp p2c">Phase 2 &#8212; RAG Systems</div>
+<a class="sl" href="#day8" data-day="8"><span class="db">D08</span>Embeddings</a>
+<a class="sl" href="#day9" data-day="9"><span class="db">D09</span>Vector Databases</a>
+<a class="sl" href="#day10" data-day="10"><span class="db">D10</span>RAG Architecture</a>
+<a class="sl" href="#day11" data-day="11"><span class="db">D11</span>Secure RAG</a>
+<a class="sl" href="#day12" data-day="12"><span class="db">D12</span>MuleSoft + RAG</a>
+<a class="sl" href="#day14" data-day="14"><span class="db">D14</span>Architecture Review</a>
+<div class="sp p3c">Phase 3 &#8212; AI Agents</div>
+<a class="sl" href="#day15" data-day="15"><span class="db">D15</span>What Is an AI Agent</a>
+<a class="sl" href="#day16" data-day="16"><span class="db">D16</span>Tool Schema Design</a>
+<a class="sl" href="#day17" data-day="17"><span class="db">D17</span>Agent Orchestration</a>
+<a class="sl" href="#day18" data-day="18"><span class="db">D18</span>MCP Protocol</a>
+<a class="sl" href="#day19" data-day="19"><span class="db">D19</span>A2A Communication</a>
+<a class="sl" href="#day20" data-day="20"><span class="db">D20</span>Human-in-the-Loop</a>
+<a class="sl" href="#day21" data-day="21"><span class="db">D21</span>Multi-Agent Arch.</a>
+<div class="sp p4c">Phase 4 &#8212; Production + Mule</div>
+<a class="sl" href="#day22" data-day="22"><span class="db">D22</span>AI + API-Led</a>
+<a class="sl" href="#day23" data-day="23"><span class="db">D23</span>DataWeave + AI</a>
+<a class="sl" href="#day24" data-day="24"><span class="db">D24</span>Cost &amp; Performance</a>
+<a class="sl" href="#day25" data-day="25"><span class="db">D25</span>Observability</a>
+<a class="sl" href="#day26" data-day="26"><span class="db">D26</span>Security Hardening</a>
+<a class="sl" href="#day27" data-day="27"><span class="db">D27</span>Final Project</a>
+<a class="sl" href="#day30" data-day="30"><span class="db">D30</span>CTO Presentation</a>
+<div class="sp p5c">&#x1F512; Authentication Layer</div>
+<a class="sl" href="#day-auth1" data-day="auth1"><span class="db">A01</span>API Key Management</a>
+<a class="sl" href="#day-auth2" data-day="auth2"><span class="db">A02</span>OAuth 2.0 &amp; JWT</a>
+<a class="sl" href="#day-auth3" data-day="auth3"><span class="db">A03</span>JWT Validation &amp; RBAC</a>
+<a class="sl" href="#day-auth4" data-day="auth4"><span class="db">A04</span>mTLS &amp; Client ID</a>
+<a class="sl" href="#day-auth5" data-day="auth5"><span class="db">A05</span>Token Lifecycle</a>
+<div class="spr"><p>Study Progress</p><div class="pt"><div class="pf" id="pf" style="width:0%"></div></div><div class="pl" id="pl">0 / 22 days</div></div>
+</nav>
+
+
+<div id="go" onclick="CG()"></div>
+<div id="gp">
+<div class="ghdr"><h2>&#128218; Quick Reference Glossary</h2><button class="gc" onclick="CG()">&#x2715; Close</button></div>
+<div class="gs"><h3>Core Formulas</h3>
+<div class="gi"><div class="gtr">Self-Attention</div><div class="gf">Attention(Q,K,V) = softmax(Q&middot;K&sup1; / &radic;d&#8342;) &middot; V</div></div>
+<div class="gi"><div class="gtr">Cosine Similarity</div><div class="gf">cos(&theta;) = (A&middot;B) / (||A|| &times; ||B||)</div></div>
+<div class="gi"><div class="gtr">Token Cost</div><div class="gf">Cost = (InputTokens &times; InputPrice) + (OutputTokens &times; OutputPrice)</div></div>
+<div class="gi"><div class="gtr">Temperature Scaling</div><div class="gf">P_scaled(t) = softmax(logit / temperature)</div></div>
+<div class="gi"><div class="gtr">ROI Formula</div><div class="gf">Net ROI = (Cases/mo &times; Min/case &times; Cost/60 &times; AutoRate) &minus; AI Cost</div></div>
+</div>
+<div class="gs"><h3>Authentication Quick Reference</h3>
+<div class="gi"><div class="gtr">OAuth 2.0 Client Credentials</div><div class="gd">Service-to-service auth. POST client_id + client_secret → get access_token. No user involved. Use for Mule-to-Mule internal calls.</div></div>
+<div class="gi"><div class="gtr">OAuth 2.0 JWT Bearer</div><div class="gd">Sign a JWT with private key → POST as assertion → get access_token. No credential storage. Standard for Salesforce integration.</div></div>
+<div class="gi"><div class="gtr">OAuth 2.0 Auth Code + PKCE</div><div class="gd">User-facing flows. Code verifier/challenge prevents auth code interception. Required for public clients (SPAs, mobile).</div></div>
+<div class="gi"><div class="gtr">mTLS</div><div class="gd">Mutual TLS — both client and server present certificates. Used for Mule internal service-to-service authentication.</div></div>
+<div class="gi"><div class="gtr">API Key</div><div class="gd">Simple bearer token for LLM provider APIs (OpenAI, Anthropic). Must be stored in Secrets Manager, rotated every 90 days.</div></div>
+<div class="gi"><div class="gtr">JWT Claims for RBAC</div><div class="gd">sub (user ID), roles (array), department, clearance_level. Used to filter RAG results and restrict agent tool access.</div></div>
+<div class="gi"><div class="gtr">NetSuite OAuth 1.0a TBA</div><div class="gd">Token-Based Auth. Requires: Consumer Key, Consumer Secret, Token ID, Token Secret. HMAC-SHA256 signed per request.</div></div>
+<div class="gi"><div class="gtr">PKCE</div><div class="gd">Proof Key for Code Exchange (RFC 7636). Prevents authorization code interception in public clients. code_verifier + code_challenge.</div></div>
+</div>
+<div class="gs"><h3>Concepts A&#8211;Z</h3>
+<div class="gi"><div class="gtr">A2A (Agent-to-Agent)</div><div class="gd">Google's open protocol (Apr 2025) enabling autonomous AI agents to communicate and delegate tasks.</div></div>
+<div class="gi"><div class="gtr">AGI</div><div class="gd">Hypothetical human-level AI generalizing across all domains. Does not exist yet.</div></div>
+<div class="gi"><div class="gtr">BPE</div><div class="gd">Byte Pair Encoding — tokenization algorithm. Iteratively merges most-frequent character pairs. ~0.75 words per token.</div></div>
+<div class="gi"><div class="gtr">Context Window</div><div class="gd">Maximum tokens LLM processes in one call — system prompt + history + RAG context + output.</div></div>
+<div class="gi"><div class="gtr">Embedding</div><div class="gd">Dense vector of text capturing semantic meaning. Similar concepts → nearby vectors in high-dimensional space.</div></div>
+<div class="gi"><div class="gtr">Guardrails</div><div class="gd">Post-processing checks on LLM output enforcing safety, schema validity, and business rules.</div></div>
+<div class="gi"><div class="gtr">Hallucination</div><div class="gd">LLM generating confident but factually wrong output. Intrinsic property of probabilistic generation.</div></div>
+<div class="gi"><div class="gtr">HITL</div><div class="gd">Human-in-the-Loop — mandatory human approval before high-risk AI agent actions execute.</div></div>
+<div class="gi"><div class="gtr">Hybrid Search</div><div class="gd">BM25 keyword + vector semantic search merged via Reciprocal Rank Fusion.</div></div>
+<div class="gi"><div class="gtr">MCP</div><div class="gd">Model Context Protocol (Anthropic, Nov 2024) — open standard for agent-to-tool communication via JSON-RPC 2.0.</div></div>
+<div class="gi"><div class="gtr">RAG</div><div class="gd">Retrieval-Augmented Generation — retrieves documents at query time, injects into prompt to ground LLM output.</div></div>
+<div class="gi"><div class="gtr">Token</div><div class="gd">Smallest LLM processing unit — ~3-4 chars or ~0.75 English words.</div></div>
+<div class="gi"><div class="gtr">Tool Calling</div><div class="gd">LLM returns structured JSON specifying tool + arguments instead of plain text. Enables agentic interactions.</div></div>
+<div class="gi"><div class="gtr">Transformer</div><div class="gd">Google Brain architecture (2017) using self-attention. Foundation of all modern LLMs.</div></div>
+</div></div>
+
+<main id="main">
+
+<section class="hero">
+<div class="ey">Master Reference Guide &middot; 2025 Edition &middot; Self-Study</div>
+<h1>AI + MuleSoft<br/><span>Enterprise Training</span></h1>
+<p class="hd">A complete self-study reference covering LLM internals, RAG systems, AI Agents, MCP/A2A protocols, production MuleSoft integration, and a comprehensive Authentication &amp; Authorization layer.</p>
+<div class="hs">
+<div class="stt"><span class="sn">30</span><span class="sl2">Days</span></div>
+<div class="stt"><span class="sn">5</span><span class="sl2">Phases</span></div>
+<div class="stt"><span class="sn">47+</span><span class="sl2">Concepts</span></div>
+<div class="stt"><span class="sn">2025</span><span class="sl2">Updated</span></div>
+</div>
+<div class="kh">
+<span class="ki"><kbd>/</kbd> Search</span>
+<span class="ki"><kbd>J/K</kbd> Navigate days</span>
+<span class="ki"><kbd>G</kbd> Glossary</span>
+<span class="ki"><kbd>Esc</kbd> Clear</span>
+</div>
+</section>
+<div id="nr"><div style="font-size:32px;margin-bottom:8px">&#128269;</div><div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text-bright)">No results found</div><div style="margin-top:4px">Try a different keyword</div></div>
+
+<div class="pb2" id="phase1">
+<div class="ph">
+<div class="pp p1">Phase 1</div>
+<h2 class="ptitle">Deep AI Foundations</h2>
+<span class="pdys">Days 1&ndash;7</span>
+</div><div class="ds" id="day1" data-day="DAY 01"><div class="dh"><span class="dn">DAY 01</span>
+<h3 class="dt">What AI Really Is</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~35 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 01"/> Mark Complete</label></div><div class="tc" data-topic-id="t01">
+<div class="tch" onclick="T(this)">
+<span class="tn">#01</span>
+<span class="tname">AI / ML / DL — The Spectrum</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t01')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t01"><textarea class="nt" placeholder="Your notes..." data-note="t01" oninput="SN('t01',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>AI</h4><p>Broad discipline for systems that reason, learn, plan, and perceive. An umbrella over all techniques.</p><h4>Machine Learning</h4><p>Systems that learn Y&nbsp;=&nbsp;f(X) from data. Paradigms: Supervised, Unsupervised, Reinforcement, Self-Supervised.</p><h4>Deep Learning</h4><p>Multi-layer neural networks. LLMs are deep learning models requiring large datasets, GPUs, and long training runs.</p><div class="rr"><a class="rl" href="https://www.ibm.com/topics/artificial-intelligence" target="_blank">&#8599; IBM — AI</a><a class="rl" href="https://www.ibm.com/topics/deep-learning" target="_blank">&#8599; IBM — Deep Learning</a></div>
+</div></div><div class="tc" data-topic-id="t02">
+<div class="tch" onclick="T(this)">
+<span class="tn">#02</span>
+<span class="tname">Narrow AI vs AGI vs Generative AI</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t02')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t02"><textarea class="nt" placeholder="Your notes..." data-note="t02" oninput="SN('t02',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>Narrow AI</h4><p>All current production AI (GPT-4, Claude, Gemini) — designed for specific task families, cannot generalize autonomously.</p><h4>AGI</h4><p>Hypothetical human-level reasoning across any domain. Does not exist as of 2025.</p><h4>Generative vs Predictive AI</h4><table class="dtbl"><thead><tr><th>Dimension</th><th>Predictive AI</th><th>Generative AI</th></tr></thead><tbody><tr><td>Output</td><td>Label / number</td><td>New content (text, code)</td></tr><tr><td>Mechanism</td><td>Classification / regression</td><td>Probabilistic token sampling</td></tr><tr><td>Enterprise use</td><td>Fraud scoring, forecasting</td><td>Case summaries, RAG assistants</td></tr></tbody></table><div class="co update"><strong>2025 Update <span class="b25">NEW</span></strong> Reasoning models (OpenAI o3, DeepSeek R1, Claude 3.7 Extended Thinking) perform internal chain-of-thought at inference time.</div><div class="rr"><a class="rl" href="https://arxiv.org/abs/2005.14165" target="_blank">&#8599; Scaling Laws</a><a class="rl" href="https://arxiv.org/abs/2206.07682" target="_blank">&#8599; Emergent Abilities</a></div>
+</div></div><div class="qs" id="qday1">
+<div class="qsh" onclick="TQ('qday1')">
+<div class="qsl"><span style="font-size:16px">&#129504;</span>
+<span class="ql">Self-Check &mdash; Day 1</span>
+<span class="qc">4 questions</span></div>
+<button class="qtb2">Show Quiz &#9662;</button>
+</div>
+<div class="qb"><div class="qq">
+<div class="qqu"><span class="qn">Q</span>What is the key difference between ML and traditional programming?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Traditional programming: explicit rules → output. ML: system discovers rules from data examples. You provide outcomes; the algorithm finds the function.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Why is Claude / GPT-4 considered Narrow AI despite writing code, translating, and reasoning?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>It still operates within training-data boundaries, cannot form persistent goals, cannot self-improve, and cannot act in the physical world without scaffolding — hallmarks of AGI.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>When would you use Predictive AI vs Generative AI in a MuleSoft integration?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Predictive: fraud risk scores, demand forecasting, churn — structured numeric output. Generative: case summarization, RAG Q&A, auto-reply drafting. Most enterprise AI combines both: predict intent then generate response.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>What are emergent capabilities and why do they matter for integration architecture?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Abilities (multi-step reasoning, code) that appear at scale but are absent in smaller models. Architecturally: test with the frontier model, not a proxy — capability jumps are unpredictable at smaller scale.</div>
+</div></div></div></div><div class="ds" id="day2" data-day="DAY 02"><div class="dh"><span class="dn">DAY 02</span>
+<h3 class="dt">Transformer Architecture</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~40 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 02"/> Mark Complete</label></div><div class="tc" data-topic-id="t03">
+<div class="tch" onclick="T(this)">
+<span class="tn">#03</span>
+<span class="tname">Transformer, Self-Attention & Multi-Head Attention</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t03')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t03"><textarea class="nt" placeholder="Your notes..." data-note="t03" oninput="SN('t03',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>Origin</h4><p>Google Brain, 2017 — <em>"Attention Is All You Need"</em>. Replaced RNNs with parallel attention mechanisms.</p><div class="ad">Input Tokens
+    ↓
+[Embedding + Positional Encoding]
+    ↓
+┌──────────────────────────────┐
+│  Encoder Block × N (BERT)    │
+│  Multi-Head Attention        │
+│  Add & LayerNorm             │
+│  Feed-Forward Network        │
+└──────────────────────────────┘
+┌──────────────────────────────┐
+│  Decoder Block × N (GPT)     │
+│  Masked Self-Attention       │
+│  Cross-Attention             │
+│  Feed-Forward Network        │
+└──────────────────────────────┘
+    ↓
+Linear + Softmax → Next Token</div><h4>Self-Attention Formula</h4><div class="fm">Attention(Q, K, V) = softmax(Q&middot;K&sup1; / &radic;d&#8342;) &middot; V</div><h4>Q / K / V Intuition</h4><ul><li><strong>Query (Q)</strong> — what information am I looking for?</li><li><strong>Key (K)</strong> — what does each token advertise?</li><li><strong>Value (V)</strong> — what content do I deliver when matched?</li></ul><h4>Multi-Head Attention</h4><p>H parallel heads, each learning different relationship types (syntax, coreference, semantics). Outputs concatenated and projected.</p><div class="fm">MultiHead(Q,K,V) = Concat(head&#8321;,...,head&#8341;) &middot; W&#8320;</div><h4>Positional Encoding (2025: RoPE)</h4><p>Transformers process tokens in parallel — no inherent order. RoPE (Rotary Position Embedding, used in LLaMA/Mistral/Gemini) encodes position via Q/K vector rotation, enabling 128K–1M token contexts.</p><div class="rr"><a class="rl" href="https://arxiv.org/abs/1706.03762" target="_blank">&#8599; Attention Is All You Need</a></div>
+</div></div><div class="qs" id="qday2">
+<div class="qsh" onclick="TQ('qday2')">
+<div class="qsl"><span style="font-size:16px">&#129504;</span>
+<span class="ql">Self-Check &mdash; Day 2</span>
+<span class="qc">3 questions</span></div>
+<button class="qtb2">Show Quiz &#9662;</button>
+</div>
+<div class="qb"><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Why does dividing by √dₖ stabilize training?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>As dₖ grows, dot products Q·Kᵀ grow in magnitude, pushing softmax into saturation (vanishing gradients). √dₖ scaling keeps values in a stable range.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Why did Transformers replace RNNs for LLMs?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>(1) Full parallelism — all tokens processed simultaneously, maximizing GPU utilization. (2) Direct long-range dependencies — attention computes pair relationships at any distance. (3) Predictable scaling with data and parameters.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Why use multiple attention heads rather than one large head?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Each head learns a different relationship type simultaneously. One head averaging all patterns loses resolution. Multiple heads provide richer, decomposed representations.</div>
+</div></div></div></div><div class="ds" id="day3" data-day="DAY 03"><div class="dh"><span class="dn">DAY 03</span>
+<h3 class="dt">Tokenization & Context Windows</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~30 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 03"/> Mark Complete</label></div><div class="tc" data-topic-id="t04">
+<div class="tch" onclick="T(this)">
+<span class="tn">#04</span>
+<span class="tname">BPE, Context Windows & Prompt Caching</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t04')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t04"><textarea class="nt" placeholder="Your notes..." data-note="t04" oninput="SN('t04',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>BPE Tokenization</h4><p>Iteratively merges most-frequent character pairs until target vocab size (~100K). Result: ~0.75 English words per token. Used by GPT, LLaMA, Mistral.</p><div class="cb3"><div class="cbh"><span class="cl">Tokenization Examples</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre>"Hello world"          → ["Hello", " world"]           2 tokens
+"MuleSoft integration" → ["Mul","eSoft"," integration"] 3 tokens
+1000 tokens ≈ 750 words ≈ 3 paragraphs</pre></div><h4>2025 Context Window Reference</h4><table class="dtbl"><thead><tr><th>Model</th><th>Context</th><th>Notes</th></tr></thead><tbody><tr><td>GPT-4o</td><td>128K tokens</td><td>OpenAI flagship</td></tr><tr><td>Claude 3.5 Sonnet</td><td>200K tokens</td><td>Anthropic flagship</td></tr><tr><td>Gemini 1.5 Pro</td><td>1M tokens</td><td>Google DeepMind</td></tr><tr><td>Llama 3.1 405B</td><td>128K tokens</td><td>Meta open-source</td></tr></tbody></table><h4>Prompt Caching <span class="b25">2024</span></h4><p>Anthropic and OpenAI cache the KV computation of static system prompts. Repeated calls get up to 90% discount on cached input tokens. Critical for enterprise integrations.</p><div class="cb3"><div class="cbh"><span class="cl">Anthropic — Prompt Caching</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre>{
+  <span class="key">"model"</span>: <span class="str">"claude-3-5-sonnet-20241022"</span>,
+  <span class="key">"system"</span>: [{
+    <span class="key">"type"</span>: <span class="str">"text"</span>,
+    <span class="key">"text"</span>: <span class="str">"You are an enterprise AI assistant..."</span>,
+    <span class="key">"cache_control"</span>: { <span class="key">"type"</span>: <span class="str">"ephemeral"</span> }
+  }]
+}</pre></div><div class="co tip"><strong>Enterprise Note</strong> Keep the system prompt <em>static</em> across calls. Variable data (user input, retrieved context) goes in the user message — this maximizes cache hit rate and cuts cost by up to 90% on cached tokens.</div><div class="rr"><a class="rl" href="https://platform.openai.com/tokenizer" target="_blank">&#8599; OpenAI Tokenizer</a><a class="rl" href="https://docs.anthropic.com/claude/docs/prompt-caching" target="_blank">&#8599; Anthropic Prompt Caching</a></div>
+</div></div></div><div class="ds" id="day4" data-day="DAY 04"><div class="dh"><span class="dn">DAY 04</span>
+<h3 class="dt">Sampling & Hallucination</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~30 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 04"/> Mark Complete</label></div><div class="tc" data-topic-id="t05">
+<div class="tch" onclick="T(this)">
+<span class="tn">#05</span>
+<span class="tname">Temperature, Top-p & Hallucination</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t05')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t05"><textarea class="nt" placeholder="Your notes..." data-note="t05" oninput="SN('t05',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>Temperature</h4><div class="fm">P_scaled(token) = softmax(logit / temperature)</div><table class="dtbl"><thead><tr><th>Temperature</th><th>Behavior</th><th>Enterprise Use</th></tr></thead><tbody><tr><td>0.0</td><td>Deterministic</td><td>Classification, extraction</td></tr><tr><td>0.2</td><td>Focused</td><td>Structured enterprise tasks</td></tr><tr><td>0.7</td><td>Balanced</td><td>General assistant</td></tr><tr><td>1.0+</td><td>Creative</td><td>Brainstorming only</td></tr></tbody></table><h4>Top-p (Nucleus Sampling)</h4><p>Selects smallest token set with cumulative probability &ge; p, then samples. Eliminates very unlikely tokens. Recommended enterprise setting: Top-p = 0.9.</p><h4>Hallucination — Root Causes</h4><ul><li><strong>Probabilistic generation</strong> — predicts plausible next token, not factual one</li><li><strong>Training data gaps</strong> — generalizes beyond training</li><li><strong>Temporal cutoff</strong> — no knowledge past training date</li><li><strong>Sycophancy</strong> — agrees with false premises in prompts</li></ul><h4>Enterprise Mitigations</h4><ul><li><strong>RAG</strong> — ground in retrieved, verified documents</li><li><strong>Tool calling</strong> — retrieve data rather than recall it</li><li><strong>JSON schema validation</strong> in Mule — reject hallucinated fields</li><li><strong>Citation requirement</strong> — force model to cite source per claim</li><li><strong>Low temperature</strong> for factual tasks</li></ul><div class="co warn"><strong>Critical</strong> Never pass raw LLM output directly to Salesforce or NetSuite write operations. Always validate in a Mule sub-flow first.</div>
+</div></div><div class="qs" id="qday4">
+<div class="qsh" onclick="TQ('qday4')">
+<div class="qsl"><span style="font-size:16px">&#129504;</span>
+<span class="ql">Self-Check &mdash; Day 4</span>
+<span class="qc">3 questions</span></div>
+<button class="qtb2">Show Quiz &#9662;</button>
+</div>
+<div class="qb"><div class="qq">
+<div class="qqu"><span class="qn">Q</span>For Salesforce case auto-classification, what temperature and top-p settings would you choose and why?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Temperature 0.0–0.1 (deterministic — same case must always produce same class). Top-p 0.9. Randomness is harmful for classification; consistency enables reliable downstream automation.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Why is calling hallucination a 'bug' architecturally dangerous?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>A bug implies it can be patched. Hallucination is an intrinsic property of probabilistic generation — it can only be mitigated architecturally (RAG, validation, HITL). Treating it as a bug leads to false confidence that a model update will fix it.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Describe the Mule validation layer you'd build between LLM response and a NetSuite write.</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>DataWeave: (1) parse JSON, (2) validate required fields, (3) check enum values and numeric ranges, (4) confirm no PII echoed back, (5) on failure → log error, return standardized error, trigger retry with corrective instruction.</div>
+</div></div></div></div><div class="ds" id="day5" data-day="DAY 05"><div class="dh"><span class="dn">DAY 05</span>
+<h3 class="dt">Prompt Engineering</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~45 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 05"/> Mark Complete</label></div><div class="tc" data-topic-id="t06">
+<div class="tch" onclick="T(this)">
+<span class="tn">#06</span>
+<span class="tname">Role-Based, CoT, Few-Shot & Structured Outputs</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t06')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t06"><textarea class="nt" placeholder="Your notes..." data-note="t06" oninput="SN('t06',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>Role-Based Prompting</h4><p>System message establishes persona, constraints, and operational context. Always define: who the model is, what it can do, what schema to return, and what it must never do.</p><div class="cb3"><div class="cbh"><span class="cl">Production System Prompt</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre>You are an enterprise case classification agent for Acme Corp.
+RULES:
+- Output ONLY valid JSON matching the schema below
+- Never guess Customer IDs — use null if not found
+- Use ONLY approved products: [SalesApp, BillingPortal, DataSync]
+SCHEMA: {"priority":"P1|P2|P3|P4","category":"billing|technical|account",
+"customerId":"string|null","sentiment":"positive|neutral|negative|urgent"}</pre></div><h4>Chain-of-Thought (CoT)</h4><p>Add "Think step by step" or examples with explicit reasoning chains. Reasoning models (o3, Claude 3.7 Extended Thinking) now perform CoT internally at inference time.</p><h4>OpenAI Structured Outputs (2024)</h4><div class="cb3"><div class="cbh"><span class="cl">Guaranteed Schema Compliance</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre>{
+  <span class="key">"model"</span>: <span class="str">"gpt-4o-2024-08-06"</span>,
+  <span class="key">"response_format"</span>: {
+    <span class="key">"type"</span>: <span class="str">"json_schema"</span>,
+    <span class="key">"json_schema"</span>: {
+      <span class="key">"name"</span>: <span class="str">"case_classification"</span>,
+      <span class="key">"strict"</span>: <span class="kw">true</span>,
+      <span class="key">"schema"</span>: {
+        <span class="key">"type"</span>: <span class="str">"object"</span>,
+        <span class="key">"properties"</span>: {
+          <span class="key">"priority"</span>: { <span class="key">"enum"</span>: [<span class="str">"P1"</span>,<span class="str">"P2"</span>,<span class="str">"P3"</span>,<span class="str">"P4"</span>] }
+        },
+        <span class="key">"required"</span>: [<span class="str">"priority"</span>]
+      }
+    }
+  }
+}</pre></div><div class="rr"><a class="rl" href="https://arxiv.org/abs/2201.11903" target="_blank">&#8599; Chain-of-Thought Paper</a><a class="rl" href="https://platform.openai.com/docs/guides/structured-outputs" target="_blank">&#8599; OpenAI Structured Outputs</a></div>
+</div></div></div><div class="ds" id="day6" data-day="DAY 06"><div class="dh"><span class="dn">DAY 06</span>
+<h3 class="dt">AI Risks & Governance</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~40 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 06"/> Mark Complete</label></div><div class="tc" data-topic-id="t07">
+<div class="tch" onclick="T(this)">
+<span class="tn">#07</span>
+<span class="tname">Prompt Injection, PII Masking & Audit Logging</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t07')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t07"><textarea class="nt" placeholder="Your notes..." data-note="t07" oninput="SN('t07',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>Prompt Injection</h4><p>Malicious text overrides system instructions. Direct: user types attack. Indirect: malicious text hidden inside a retrieved RAG document. Mitigate via input sanitization in Mule, static system prompts, and output pattern detection.</p><h4>PII Masking — DataWeave</h4><div class="cb3"><div class="cbh"><span class="cl">DataWeave — PII Masking Before LLM Call</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre>%dw 2.0
+output application/json
+<span class="kw">fun</span> maskEmail(t) = t <span class="kw">replace</span> /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/
+  <span class="kw">with</span> <span class="str">"[EMAIL_REDACTED]"</span>
+<span class="kw">fun</span> maskSSN(t) = t <span class="kw">replace</span> /\d{3}-\d{2}-\d{4}/ <span class="kw">with</span> <span class="str">"[SSN_REDACTED]"</span>
+<span class="kw">fun</span> maskCC(t) = t <span class="kw">replace</span> /\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b/
+  <span class="kw">with</span> <span class="str">"[CARD_REDACTED]"</span>
+---
+{ prompt: maskCC(maskSSN(maskEmail(payload.caseDescription))) }</pre></div><h4>AI Audit Logging — Required Fields</h4><p>Every LLM interaction must log: traceId, timestamp, userId, model, promptHash (SHA-256), inputTokens, outputTokens, cachedTokens, latencyMs, toolsCalled, validationPassed, hitlTriggered, cost_usd, environment.</p><div class="rr"><a class="rl" href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank">&#8599; OWASP Top 10 for LLMs</a></div>
+</div></div></div><div class="ds" id="day7" data-day="DAY 07"><div class="dh"><span class="dn">DAY 07</span>
+<h3 class="dt">Architecture Reflection</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~50 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 07"/> Mark Complete</label></div><div class="tc" data-topic-id="t08">
+<div class="tch" onclick="T(this)">
+<span class="tn">#08</span>
+<span class="tname">Full Enterprise Architecture Diagram</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t08')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t08"><textarea class="nt" placeholder="Your notes..." data-note="t08" oninput="SN('t08',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<div class="ad">┌──────────────────────────────────────────────────┐
+│            EXPERIENCE LAYER                       │
+│  Salesforce UI │ Web Portal │ Slack │ Mobile       │
+└─────────────────────┬────────────────────────────┘
+                      │ REST / GraphQL + JWT Bearer
+┌─────────────────────▼────────────────────────────┐
+│        AI ORCHESTRATION API (MuleSoft)            │
+│  JWT Validation → PII Masking → RAG Retrieval     │
+│  → Prompt Build → LLM Call → Schema Validate     │
+│  → Audit Log → Tool Routing                      │
+└─────────────────────┬────────────────────────────┘
+                      │ OAuth 2.0 Client Credentials
+┌─────────────────────▼────────────────────────────┐
+│          PROCESS API LAYER (MuleSoft)             │
+│   Case API │ Billing API │ Order API              │
+└─────────────────────┬────────────────────────────┘
+                      │ mTLS + Client ID
+┌─────────────────────▼────────────────────────────┐
+│          SYSTEM API LAYER (MuleSoft)              │
+│   Salesforce API │ NetSuite API │ Vector DB        │
+└─────────────────────┬────────────────────────────┘
+                      │
+┌─────────────────────▼────────────────────────────┐
+│     GOVERNANCE, OBSERVABILITY, SECURITY           │
+│  Audit Logs │ Token Metrics │ RBAC │ HITL         │
+└──────────────────────────────────────────────────┘</div>
+</div></div><div class="qs" id="qday7">
+<div class="qsh" onclick="TQ('qday7')">
+<div class="qsl"><span style="font-size:16px">&#129504;</span>
+<span class="ql">Self-Check &mdash; Day 7</span>
+<span class="qc">2 questions</span></div>
+<button class="qtb2">Show Quiz &#9662;</button>
+</div>
+<div class="qb"><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Why is AI Orchestration a separate API layer rather than logic inside the Experience API?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Separation of concerns: swap LLM providers without touching Experience API; reuse AI layer from multiple experience APIs; scale independently; version AI behaviour independently of consumer contracts.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>CTO asks: why not just call OpenAI directly from Salesforce? How do you respond?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Direct calls bypass: (1) PII masking — regulated data sent unmasked, (2) validation layer — hallucinated data writes to production, (3) audit logging — no compliance trail, (4) cost control, (5) RAG orchestration, (6) HITL for risky transactions, (7) vendor portability. Mule is the governance and security layer that makes AI enterprise-safe.</div>
+</div></div></div></div></div>
+<div class="pb2" id="phase2">
+<div class="ph">
+<div class="pp p2">Phase 2</div>
+<h2 class="ptitle">RAG Systems</h2>
+<span class="pdys">Days 8&ndash;14</span>
+</div><div class="ds" id="day8" data-day="DAY 08"><div class="dh"><span class="dn">DAY 08</span>
+<h3 class="dt">Embeddings & Semantic Search</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~30 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 08"/> Mark Complete</label></div><div class="tc" data-topic-id="t09">
+<div class="tch" onclick="T(this)">
+<span class="tn">#09</span>
+<span class="tname">Vector Embeddings & Cosine Similarity</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t09')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t09"><textarea class="nt" placeholder="Your notes..." data-note="t09" oninput="SN('t09',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>Embedding</h4><p>Dense vector capturing semantic meaning. Similar concepts map to nearby vectors. Dimensionality: 768–3072. Models: OpenAI text-embedding-3-large, Cohere embed-v3.</p><div class="fm">cosine_similarity(A, B) = (A&middot;B) / (||A|| &times; ||B||) &rarr; range [-1, 1]</div><table class="dtbl"><thead><tr><th>Query: 'payment failed'</th><th>Keyword Search</th><th>Semantic Search</th></tr></thead><tbody><tr><td>Finds</td><td>payment failed</td><td>Also: billing error, charge declined</td></tr><tr><td>Synonyms</td><td>No</td><td>Yes</td></tr><tr><td>Typos</td><td>No</td><td>Partially</td></tr></tbody></table><div class="rr"><a class="rl" href="https://platform.openai.com/docs/guides/embeddings" target="_blank">&#8599; OpenAI Embeddings</a></div>
+</div></div></div><div class="ds" id="day9" data-day="DAY 09"><div class="dh"><span class="dn">DAY 09</span>
+<h3 class="dt">Vector Databases</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~35 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 09"/> Mark Complete</label></div><div class="tc" data-topic-id="t10">
+<div class="tch" onclick="T(this)">
+<span class="tn">#10</span>
+<span class="tname">Vector DB Comparison & Hybrid Search</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t10')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t10"><textarea class="nt" placeholder="Your notes..." data-note="t10" oninput="SN('t10',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<table class="dtbl"><thead><tr><th>Database</th><th>Type</th><th>Best For</th><th>2025 Status</th></tr></thead><tbody><tr><td>Pinecone</td><td>Managed SaaS</td><td>Enterprise, fast setup</td><td>Leading managed</td></tr><tr><td>Weaviate</td><td>Open / Managed</td><td>Hybrid search, GraphQL</td><td>Strong enterprise</td></tr><tr><td>FAISS</td><td>Library (Meta)</td><td>In-memory, research</td><td>Self-hosted only</td></tr><tr><td>Qdrant <span class="b25">NEW</span></td><td>Open / Managed</td><td>Filtering, metadata</td><td>Rapidly growing</td></tr><tr><td>pgvector <span class="b25">NEW</span></td><td>Postgres extension</td><td>Existing Postgres stacks</td><td>Most pragmatic</td></tr></tbody></table><h4>Hybrid Search</h4><p>Combines BM25 keyword + vector semantic search merged via Reciprocal Rank Fusion (RRF). Outperforms either alone, especially for short queries and exact-match needs.</p><div class="co tip"><strong>Enterprise Recommendation</strong> Start with pgvector on existing PostgreSQL or Pinecone serverless. Reserve Weaviate for complex hybrid search scenarios.</div><div class="rr"><a class="rl" href="https://www.pinecone.io/learn/" target="_blank">&#8599; Pinecone Learning</a><a class="rl" href="https://github.com/pgvector/pgvector" target="_blank">&#8599; pgvector GitHub</a></div>
+</div></div></div><div class="ds" id="day10" data-day="DAY 10"><div class="dh"><span class="dn">DAY 10</span>
+<h3 class="dt">RAG Architecture Deep Dive</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~45 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 10"/> Mark Complete</label></div><div class="tc" data-topic-id="t11">
+<div class="tch" onclick="T(this)">
+<span class="tn">#11</span>
+<span class="tname">RAG Pipeline, Chunking & Context Compression</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t11')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t11"><textarea class="nt" placeholder="Your notes..." data-note="t11" oninput="SN('t11',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<div class="ad">INDEXING (one-time / scheduled)
+  Documents → Text Extraction → Chunking
+  → Embed each chunk → Store in Vector DB
+
+QUERYING (real-time per request)
+  User Query → Embed → Vector Search → Top-K chunks
+  → Re-rank → Compress → Build prompt
+  → LLM Call → Validate → Return</div><h4>Chunking Strategies</h4><ul><li><strong>Fixed-size</strong> — every N tokens (simple, may cut mid-sentence)</li><li><strong>Sliding window</strong> — overlapping chunks preserve cross-boundary context</li><li><strong>Semantic chunking</strong> — split at topic boundaries</li><li><strong>Hierarchical</strong> — small chunk for retrieval, parent chunk for context</li></ul><div class="rr"><a class="rl" href="https://arxiv.org/abs/2005.11401" target="_blank">&#8599; Original RAG Paper</a></div>
+</div></div></div><div class="ds" id="day11" data-day="DAY 11"><div class="dh"><span class="dn">DAY 11</span>
+<h3 class="dt">Secure RAG</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~35 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 11"/> Mark Complete</label></div><div class="tc" data-topic-id="t12">
+<div class="tch" onclick="T(this)">
+<span class="tn">#12</span>
+<span class="tname">Secure Enterprise RAG Architecture</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t12')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t12"><textarea class="nt" placeholder="Your notes..." data-note="t12" oninput="SN('t12',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<ul><li><strong>Metadata filtering</strong> — store role/dept/classification tags on chunks; filter before similarity search</li><li><strong>Namespace isolation</strong> — separate security domains in separate vector DB namespaces</li><li><strong>Pre-retrieval filtering</strong> — apply RBAC in Mule before querying vector DB</li><li><strong>Post-retrieval validation</strong> — verify each returned chunk is accessible to requesting user</li><li><strong>Injection scan</strong> — scan retrieved text for injection patterns before prompt insertion</li></ul><div class="ad">Secure RAG in Mule:
+  1. Extract user roles from JWT claims
+  2. Build metadata filter: {dept: 'Finance', clearance: ≤ 3}
+  3. Query vector DB WITH filter
+  4. Scan chunks for injection patterns
+  5. Mask PII in retrieved text
+  6. Assemble prompt → LLM → Validate → Log</div>
+</div></div></div><div class="ds" id="day12" data-day="DAY 12"><div class="dh"><span class="dn">DAY 12</span>
+<h3 class="dt">MuleSoft + RAG Design</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~60 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 12"/> Mark Complete</label></div><div class="tc" data-topic-id="t13">
+<div class="tch" onclick="T(this)">
+<span class="tn">#13</span>
+<span class="tname">Mule RAG Orchestration Flow</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t13')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t13"><textarea class="nt" placeholder="Your notes..." data-note="t13" oninput="SN('t13',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<div class="cb3"><div class="cbh"><span class="cl">MuleSoft RAG AI Orchestration Flow</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre>POST /api/v1/ai/ask  →  Experience API (JWT Bearer)
+  ↓
+Flow: ai-rag-orchestration
+  1. [HTTP Listener]         ← Client Credentials + JWT
+  2. [JWT Policy]            ← Validate token, extract roles
+  3. [DataWeave]             ← Mask PII in question
+  4. [HTTP: Embedding API]   ← Embed question (API Key auth)
+  5. [HTTP: Vector DB]       ← Similarity search + role filter
+  6. [DataWeave]             ← Compress + format chunks
+  7. [DataWeave]             ← Build final prompt
+  8. [HTTP: LLM API]         ← Call Claude/GPT-4o (API Key)
+  9. [DataWeave]             ← Validate + parse response
+ 10. [Logger]                ← Audit log
+ 11. [HTTP Response]         ← Return answer + sources</pre></div>
+</div></div></div><div class="ds" id="day14" data-day="DAY 14"><div class="dh"><span class="dn">DAY 14</span>
+<h3 class="dt">Architecture Midpoint Review</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~60 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 14"/> Mark Complete</label></div><div class="tc" data-topic-id="t14">
+<div class="tch" onclick="T(this)">
+<span class="tn">#14</span>
+<span class="tname">Enterprise AI Assistant — Architecture Proposal v1</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t14')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t14"><textarea class="nt" placeholder="Your notes..." data-note="t14" oninput="SN('t14',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<div class="co info"><strong>Day 14 Deliverable</strong> Write your Enterprise AI Assistant Architecture Proposal v1. Use the note field below. Cover: Problem Statement, Proposed Architecture, Component Selection, Security Controls (auth at each layer), Success Metrics, Risks.</div><div class='na open' id='note-t14'><textarea class='nt' placeholder='Draft your architecture proposal here — auto-saved...' data-note='t14' oninput="SN('t14',this.value)" style='min-height:160px'></textarea><div class='nf'><span>&#128190; Auto-saved</span></div></div>
+</div></div></div></div>
+<div class="pb2" id="phase3">
+<div class="ph">
+<div class="pp p3">Phase 3</div>
+<h2 class="ptitle">AI Agents</h2>
+<span class="pdys">Days 15&ndash;21</span>
+</div><div class="ds" id="day15" data-day="DAY 15"><div class="dh"><span class="dn">DAY 15</span>
+<h3 class="dt">What Is an AI Agent?</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~40 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 15"/> Mark Complete</label></div><div class="tc" data-topic-id="t15">
+<div class="tch" onclick="T(this)">
+<span class="tn">#15</span>
+<span class="tname">AI Agent Definition, Components & ReAct Loop</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t15')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t15"><textarea class="nt" placeholder="Your notes..." data-note="t15" oninput="SN('t15',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>Definition</h4><p>LLM-powered system that autonomously pursues a goal by iterating through reasoning, tool invocation, and observation. Maintains state, makes multi-step decisions.</p><div class="ad">GOAL: 'Resolve billing dispute for #C-8821'
+THINK → Need to fetch the invoice first
+ACT   → call_tool('get_invoice', {id:'C-8821'})
+OBSERVE → {amount: $500, status: 'overdue'}
+THINK → Check contract for credit clause
+ACT   → call_tool('get_contract', {id:'C-8821'})
+OBSERVE → SLA credit clause found (clause 4.2)
+THINK → Apply 20% credit per contract
+ACT   → call_tool('apply_credit', {amount: 100})
+OBSERVE → Credit applied ✓
+ACT   → call_tool('update_case', {status:'Resolved'})
+GOAL COMPLETE ✓</div><div class="rr"><a class="rl" href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank">&#8599; Lilian Weng — LLM Agents</a></div>
+</div></div></div><div class="ds" id="day16" data-day="DAY 16"><div class="dh"><span class="dn">DAY 16</span>
+<h3 class="dt">Tool Schema Design</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~45 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 16"/> Mark Complete</label></div><div class="tc" data-topic-id="t16">
+<div class="tch" onclick="T(this)">
+<span class="tn">#16</span>
+<span class="tname">Tool Calling & Schema Design Principles</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t16')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t16"><textarea class="nt" placeholder="Your notes..." data-note="t16" oninput="SN('t16',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<div class="cb3"><div class="cbh"><span class="cl">Tool Schema — Enterprise Salesforce + NetSuite</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre><span class="cm">// Salesforce Case Update</span>
+{
+  <span class="key">"name"</span>: <span class="str">"update_salesforce_case"</span>,
+  <span class="key">"description"</span>: <span class="str">"Updates status or resolution note on a Salesforce Case."</span>,
+  <span class="key">"parameters"</span>: {
+    <span class="key">"type"</span>: <span class="str">"object"</span>,
+    <span class="key">"properties"</span>: {
+      <span class="key">"caseId"</span>: { <span class="key">"type"</span>: <span class="str">"string"</span> },
+      <span class="key">"status"</span>: { <span class="key">"enum"</span>: [<span class="str">"New"</span>,<span class="str">"In Progress"</span>,<span class="str">"Resolved"</span>,<span class="str">"Closed"</span>] },
+      <span class="key">"resolutionNote"</span>: { <span class="key">"type"</span>: <span class="str">"string"</span>, <span class="key">"maxLength"</span>: <span class="num">500</span> }
+    },
+    <span class="key">"required"</span>: [<span class="str">"caseId"</span>]
+  }
+}</pre></div><div class="rr"><a class="rl" href="https://platform.openai.com/docs/guides/function-calling" target="_blank">&#8599; OpenAI Function Calling</a><a class="rl" href="https://docs.anthropic.com/claude/docs/tool-use" target="_blank">&#8599; Anthropic Tool Use</a></div>
+</div></div></div><div class="ds" id="day17" data-day="DAY 17"><div class="dh"><span class="dn">DAY 17</span>
+<h3 class="dt">Agent Orchestration</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~40 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 17"/> Mark Complete</label></div><div class="tc" data-topic-id="t17">
+<div class="tch" onclick="T(this)">
+<span class="tn">#17</span>
+<span class="tname">Orchestration Patterns & Frameworks (2025)</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t17')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t17"><textarea class="nt" placeholder="Your notes..." data-note="t17" oninput="SN('t17',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<ul><li><strong>LangGraph</strong> — state machine-based orchestration. Explicit control flow. Best for production enterprise agents.</li><li><strong>CrewAI</strong> — role-based multi-agent. Define agents as crew members with goals and tools.</li><li><strong>Custom Mule Flow</strong> — for MuleSoft-first orgs, implement agent loop directly in Mule via HTTP connectors and DataWeave.</li></ul><table class="dtbl"><thead><tr><th>Pattern</th><th>Description</th><th>Use Case</th></tr></thead><tbody><tr><td>Single Agent</td><td>One LLM, multiple tools</td><td>Simple automation</td></tr><tr><td>Supervisor + Workers</td><td>Orchestrator delegates to specialists</td><td>Multi-domain tasks</td></tr><tr><td>Planner + Executor</td><td>Plan then execute each step</td><td>Long-horizon tasks</td></tr><tr><td>Parallel Agents</td><td>Multiple agents run concurrently</td><td>Research + synthesis</td></tr></tbody></table><div class="rr"><a class="rl" href="https://langchain-ai.github.io/langgraph/" target="_blank">&#8599; LangGraph</a><a class="rl" href="https://docs.crewai.com/" target="_blank">&#8599; CrewAI Docs</a></div>
+</div></div></div><div class="ds" id="day18" data-day="DAY 18"><div class="dh"><span class="dn">DAY 18</span>
+<h3 class="dt">MCP — Model Context Protocol</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~40 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 18"/> Mark Complete</label></div><div class="tc" data-topic-id="t18">
+<div class="tch" onclick="T(this)">
+<span class="tn">#18</span>
+<span class="tname">Model Context Protocol (MCP) <span class="b25">Nov 2024</span></span>
+<div class="ta2"><button class="nb" onclick="N(event,'t18')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t18"><textarea class="nt" placeholder="Your notes..." data-note="t18" oninput="SN('t18',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>Definition</h4><p>Open standard from Anthropic. Standardizes how AI agents connect to tools via JSON-RPC 2.0. Before MCP: bespoke integration for every LLM + tool combination. After MCP: one protocol, any LLM, any tool.</p><h4>MCP Primitives</h4><ul><li><strong>Tools</strong> — executable functions</li><li><strong>Resources</strong> — data the model reads</li><li><strong>Prompts</strong> — reusable prompt templates</li></ul><div class="ad">MCP HOST (Claude / Cursor / MuleSoft)
+    │ JSON-RPC 2.0
+    ├── MCP Server: Salesforce (tools: get_case, update_case)
+    └── MCP Server: NetSuite  (tools: get_invoice, apply_credit)</div><div class="co tip"><strong>MuleSoft as MCP Server</strong> Each Mule Process API endpoint becomes a discoverable MCP tool. Any MCP-compatible agent can call your Mule APIs without custom connectors.</div><div class="rr"><a class="rl" href="https://modelcontextprotocol.io/" target="_blank">&#8599; MCP Official Site</a><a class="rl" href="https://github.com/modelcontextprotocol/servers" target="_blank">&#8599; MCP Server Examples</a></div>
+</div></div></div><div class="ds" id="day19" data-day="DAY 19"><div class="dh"><span class="dn">DAY 19</span>
+<h3 class="dt">A2A Protocol</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~35 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 19"/> Mark Complete</label></div><div class="tc" data-topic-id="t19">
+<div class="tch" onclick="T(this)">
+<span class="tn">#19</span>
+<span class="tname">Agent-to-Agent (A2A) <span class="b25">Apr 2025</span></span>
+<div class="ta2"><button class="nb" onclick="N(event,'t19')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t19"><textarea class="nt" placeholder="Your notes..." data-note="t19" oninput="SN('t19',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>Definition</h4><p>Google's open protocol enabling AI agents to communicate and delegate tasks to other agents. Complements MCP: MCP connects agents to tools; A2A connects agents to agents.</p><table class="dtbl"><thead><tr><th></th><th>MCP</th><th>A2A</th></tr></thead><tbody><tr><td>Purpose</td><td>Agent ↔ Tool/Data</td><td>Agent ↔ Agent</td></tr><tr><td>Origin</td><td>Anthropic, Nov 2024</td><td>Google, Apr 2025</td></tr><tr><td>Use case</td><td>Fetch invoice, update case</td><td>Research agent tasks executor agent</td></tr></tbody></table><div class="ad">Research Agent → [A2A task delegation] → Execution Agent
+                                      → [MCP tool call]  → MuleSoft API
+                                                          → Salesforce / NetSuite</div><div class="rr"><a class="rl" href="https://google.github.io/A2A/" target="_blank">&#8599; Google A2A Protocol</a></div>
+</div></div></div><div class="ds" id="day20" data-day="DAY 20"><div class="dh"><span class="dn">DAY 20</span>
+<h3 class="dt">Human-in-the-Loop</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~35 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 20"/> Mark Complete</label></div><div class="tc" data-topic-id="t20">
+<div class="tch" onclick="T(this)">
+<span class="tn">#20</span>
+<span class="tname">HITL Design & Mule Approval Flow</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t20')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t20"><textarea class="nt" placeholder="Your notes..." data-note="t20" oninput="SN('t20',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<div class="cb3"><div class="cbh"><span class="cl">MuleSoft HITL Flow</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre>Flow: agent-financial-action
+  1. Agent proposes: {type:"apply_credit", amount: 500}
+  2. [Risk Eval] IF amount > 250 → APPROVAL QUEUE
+  3. Store pending action → state: "PENDING"
+  4. Slack notification → approver
+  5. Return: {taskId:"T-991", status:"pending"}
+
+Approval Callback:
+  POST /approvals/{taskId}/approve  (JWT-authenticated)
+  → Verify approver role (HITL_APPROVER scope)
+  → Load action → Execute via System API
+  → Update state: "COMPLETED" → Audit log</pre></div>
+</div></div></div><div class="ds" id="day21" data-day="DAY 21"><div class="dh"><span class="dn">DAY 21</span>
+<h3 class="dt">Enterprise Multi-Agent Architecture</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~50 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 21"/> Mark Complete</label></div><div class="tc" data-topic-id="t21">
+<div class="tch" onclick="T(this)">
+<span class="tn">#21</span>
+<span class="tname">Full Multi-Agent Enterprise Design</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t21')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t21"><textarea class="nt" placeholder="Your notes..." data-note="t21" oninput="SN('t21',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<div class="ad">USER REQUEST → ORCHESTRATOR AGENT (plans, routes)
+    ├── RAG Agent    → Vector DB
+    ├── Case Agent   → SFDC Tools (via MCP)
+    └── Finance Agent → NetSuite Tools (via MCP)
+                           ↓
+                    HITL GATE (risky actions)
+                           ↓
+                    MuleSoft Process APIs
+                           ↓
+              Salesforce │ NetSuite
+                           ↓
+                  GOVERNANCE LAYER
+              Audit │ RBAC │ Metrics │ Alerts</div>
+</div></div><div class="qs" id="qday21">
+<div class="qsh" onclick="TQ('qday21')">
+<div class="qsl"><span style="font-size:16px">&#129504;</span>
+<span class="ql">Self-Check &mdash; Day 21</span>
+<span class="qc">2 questions</span></div>
+<button class="qtb2">Show Quiz &#9662;</button>
+</div>
+<div class="qb"><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Why separate the Research Agent from the Execution Agent?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Security boundary: Research Agent reads only; Execution Agent writes but gets instructions from Research Agent, not directly from users. Prevents a compromised retrieval from directly executing a write without validation.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>CTO asks: what triggers HITL in the billing dispute agent?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Credit amount exceeds threshold ($250+), bulk operations, contract modifications, external customer communications, account closure, agent confidence score below threshold. Thresholds defined by finance/compliance, not engineering.</div>
+</div></div></div></div></div>
+<div class="pb2" id="phase4">
+<div class="ph">
+<div class="pp p4">Phase 4</div>
+<h2 class="ptitle">Production AI + MuleSoft</h2>
+<span class="pdys">Days 22&ndash;30</span>
+</div><div class="ds" id="day22" data-day="DAY 22"><div class="dh"><span class="dn">DAY 22</span>
+<h3 class="dt">AI + API-Led Connectivity</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~45 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 22"/> Mark Complete</label></div><div class="tc" data-topic-id="t22">
+<div class="tch" onclick="T(this)">
+<span class="tn">#22</span>
+<span class="tname">AI-Extended API-Led Architecture</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t22')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t22"><textarea class="nt" placeholder="Your notes..." data-note="t22" oninput="SN('t22',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<div class="ad">TRADITIONAL              AI-EXTENDED
+─────────────────        ──────────────────────────
+Experience API           Experience API
+    ↓                         ↓
+Process API      →       AI Orchestration API  ← NEW
+    ↓                         ↓
+System API               Process API
+                              ↓
+                         System API</div><h4>AI Orchestration API Responsibilities</h4><ul><li>JWT / OAuth 2.0 validation (incoming requests)</li><li>PII masking (DataWeave) before LLM call</li><li>RAG retrieval (embed → vector search → assemble)</li><li>LLM API call with secure API Key management</li><li>Output schema validation + retry</li><li>Tool call routing to Process APIs</li><li>Audit logging + token budget enforcement</li><li>Response caching, model routing</li></ul><div class="rr"><a class="rl" href="https://www.mulesoft.com/resources/api/api-led-connectivity" target="_blank">&#8599; MuleSoft API-Led Connectivity</a></div>
+</div></div></div><div class="ds" id="day23" data-day="DAY 23"><div class="dh"><span class="dn">DAY 23</span>
+<h3 class="dt">DataWeave + AI</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~45 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 23"/> Mark Complete</label></div><div class="tc" data-topic-id="t23">
+<div class="tch" onclick="T(this)">
+<span class="tn">#23</span>
+<span class="tname">DataWeave for AI Integration</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t23')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t23"><textarea class="nt" placeholder="Your notes..." data-note="t23" oninput="SN('t23',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<div class="cb3"><div class="cbh"><span class="cl">DataWeave — LLM Response Validation</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre>%dw 2.0
+output application/json
+<span class="kw">var</span> llmResponse = payload.choices[0].message.content
+<span class="kw">var</span> parsed = read(llmResponse, <span class="str">"application/json"</span>)
+<span class="kw">var</span> validPriorities = [<span class="str">"P1"</span>,<span class="str">"P2"</span>,<span class="str">"P3"</span>,<span class="str">"P4"</span>]
+---
+{
+  priority: <span class="kw">if</span> (validPriorities <span class="kw">contains</span> parsed.priority)
+    parsed.priority <span class="kw">else</span> <span class="str">"P3"</span>,
+  category: parsed.category <span class="kw">default</span> <span class="str">"general"</span>,
+  summary: parsed.summary[0..99],
+  customerId: parsed.customerId <span class="kw">default</span> <span class="kw">null</span>,
+  _meta: { processedAt: now(), model: vars.llmModel }
+}</pre></div><div class="rr"><a class="rl" href="https://docs.mulesoft.com/dataweave/" target="_blank">&#8599; DataWeave Docs</a></div>
+</div></div></div><div class="ds" id="day24" data-day="DAY 24"><div class="dh"><span class="dn">DAY 24</span>
+<h3 class="dt">Cost & Performance</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~40 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 24"/> Mark Complete</label></div><div class="tc" data-topic-id="t24">
+<div class="tch" onclick="T(this)">
+<span class="tn">#24</span>
+<span class="tname">Token Budget, Caching & Model Routing</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t24')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t24"><textarea class="nt" placeholder="Your notes..." data-note="t24" oninput="SN('t24',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<table class="dtbl"><thead><tr><th>Component</th><th>Token Budget</th><th>Strategy</th></tr></thead><tbody><tr><td>System Prompt</td><td>< 500 tokens</td><td>Static + prompt caching</td></tr><tr><td>RAG Context</td><td>1,000–3,000</td><td>Top-3 chunks, compressed</td></tr><tr><td>Conversation History</td><td>< 2,000</td><td>Summarize old turns</td></tr><tr><td>User Input</td><td>< 500</td><td>Enforce limit in Mule</td></tr><tr><td>Output</td><td>200–800</td><td>Set max_tokens in API call</td></tr><tr><td><strong>Total Target</strong></td><td><strong>< 7,000</strong></td><td>Per request</td></tr></tbody></table><h4>Model Routing</h4><ul><li>Triage / classification → Claude Haiku / GPT-4o-mini</li><li>Complex reasoning / agent decisions → Claude Sonnet / GPT-4o</li><li>Routing logic in AI Orchestration API based on task type</li></ul>
+</div></div></div><div class="ds" id="day25" data-day="DAY 25"><div class="dh"><span class="dn">DAY 25</span>
+<h3 class="dt">Observability</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~40 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 25"/> Mark Complete</label></div><div class="tc" data-topic-id="t25">
+<div class="tch" onclick="T(this)">
+<span class="tn">#25</span>
+<span class="tname">AI Observability — Logging, Metrics & Dashboard</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t25')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t25"><textarea class="nt" placeholder="Your notes..." data-note="t25" oninput="SN('t25',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<div class="cb3"><div class="cbh"><span class="cl">AI Audit Log Schema</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre>{
+  <span class="key">"traceId"</span>: <span class="str">"uuid"</span>,
+  <span class="key">"timestamp"</span>: <span class="str">"ISO-8601"</span>,
+  <span class="key">"userId"</span>: <span class="str">"string"</span>,
+  <span class="key">"model"</span>: <span class="str">"claude-3-5-sonnet-20241022"</span>,
+  <span class="key">"promptHash"</span>: <span class="str">"sha256"</span>,
+  <span class="key">"inputTokens"</span>: <span class="num">1842</span>,
+  <span class="key">"outputTokens"</span>: <span class="num">312</span>,
+  <span class="key">"cachedTokens"</span>: <span class="num">450</span>,
+  <span class="key">"latencyMs"</span>: <span class="num">1240</span>,
+  <span class="key">"toolsCalled"</span>: [<span class="str">"get_invoice"</span>, <span class="str">"apply_credit"</span>],
+  <span class="key">"validationPassed"</span>: <span class="kw">true</span>,
+  <span class="key">"hitlTriggered"</span>: <span class="kw">false</span>,
+  <span class="key">"cost_usd"</span>: <span class="num">0.0042</span>
+}</pre></div><h4>Key Dashboard Metrics</h4><ul><li>Tokens/day by model and use case + daily cost</li><li>Latency p50, p95, p99</li><li>Schema validation failure rate (hallucination proxy)</li><li>HITL trigger rate (% requiring human approval)</li><li>Cache hit rate</li><li>Tool call success/failure per tool</li></ul>
+</div></div></div><div class="ds" id="day26" data-day="DAY 26"><div class="dh"><span class="dn">DAY 26</span>
+<h3 class="dt">Security Hardening</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~40 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 26"/> Mark Complete</label></div><div class="tc" data-topic-id="t26">
+<div class="tch" onclick="T(this)">
+<span class="tn">#26</span>
+<span class="tname">Rate Limiting, Output Guardrails & RBAC</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t26')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t26"><textarea class="nt" placeholder="Your notes..." data-note="t26" oninput="SN('t26',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>Output Guardrails Checklist</h4><ul><li>Schema validation — reject non-matching JSON</li><li>Content moderation — scan for toxic / policy-violating content</li><li>PII detection in output — ensure no unmasked PII echoed back</li><li>Business rule validation — amounts within limits, valid status transitions</li><li>Injection pattern detection — output contains no instruction-like text</li></ul><table class="dtbl"><thead><tr><th>Layer</th><th>RBAC Control</th></tr></thead><tbody><tr><td>Experience API</td><td>JWT scopes limit accessible AI features</td></tr><tr><td>AI Orchestration</td><td>Role determines which tools agent may call</td></tr><tr><td>RAG Retrieval</td><td>Metadata filter on vector DB by user role</td></tr><tr><td>System API</td><td>Service account scoped to required ops only</td></tr></tbody></table><div class="rr"><a class="rl" href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank">&#8599; OWASP Top 10 for LLMs</a></div>
+</div></div></div><div class="ds" id="day27" data-day="DAY 27"><div class="dh"><span class="dn">DAY 27</span>
+<h3 class="dt">Final Project Design</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~60 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 27"/> Mark Complete</label></div><div class="tc" data-topic-id="t27">
+<div class="tch" onclick="T(this)">
+<span class="tn">#27</span>
+<span class="tname">AI-Powered Salesforce ↔ NetSuite Assistant</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t27')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t27"><textarea class="nt" placeholder="Your notes..." data-note="t27" oninput="SN('t27',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<table class="dtbl"><thead><tr><th>Risk</th><th>Likelihood</th><th>Mitigation</th></tr></thead><tbody><tr><td>Hallucinated financial data applied</td><td>Medium</td><td>Schema validation + HITL for all writes</td></tr><tr><td>PII leakage to LLM provider</td><td>Medium</td><td>DataWeave masking before every call</td></tr><tr><td>Prompt injection via case description</td><td>Low</td><td>Input sanitization in AI Orchestration API</td></tr><tr><td>Runaway token cost</td><td>Low</td><td>Daily budget limit + alerting</td></tr><tr><td>LLM provider outage</td><td>Low</td><td>Fallback to secondary provider in Mule</td></tr></tbody></table><div class='na open' id='note-t27'><textarea class='nt' placeholder='Draft your project design here...' data-note='t27' oninput="SN('t27',this.value)" style='min-height:120px'></textarea><div class='nf'><span>&#128190; Auto-saved</span></div></div>
+</div></div></div><div class="ds" id="day30" data-day="DAY 28-30"><div class="dh"><span class="dn">DAY 28-30</span>
+<h3 class="dt">CTO Presentation</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~3 hours</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="DAY 28-30"/> Mark Complete</label></div><div class="tc" data-topic-id="t28">
+<div class="tch" onclick="T(this)">
+<span class="tn">#28</span>
+<span class="tname">CTO Presentation Framework & ROI Model</span>
+<div class="ta2"><button class="nb" onclick="N(event,'t28')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-t28"><textarea class="nt" placeholder="Your notes..." data-note="t28" oninput="SN('t28',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<div class="fm">Net ROI = (Cases/mo &times; Min/case &times; HourlyCost/60 &times; AutoRate) &minus; AI Cost/mo</div><h4>Slide Structure</h4><ul><li><strong>Slide 1</strong> — Problem: current state, cost of status quo</li><li><strong>Slide 2</strong> — Proposed solution in plain language</li><li><strong>Slide 3</strong> — Architecture (1-page diagram)</li><li><strong>Slide 4</strong> — Risk mitigation (HITL, guardrails, RBAC, audit)</li><li><strong>Slide 5</strong> — ROI model</li><li><strong>Slide 6</strong> — Phased roadmap</li></ul><div class="co tip"><strong>Tip</strong> Lead with the risk mitigation slide in CTO conversations. Show HITL + RBAC + guardrails first, then ROI.</div><div class='na open' id='note-t28'><textarea class='nt' placeholder='Build your CTO talking points here...' data-note='t28' oninput="SN('t28',this.value)" style='min-height:120px'></textarea><div class='nf'><span>&#128190; Auto-saved</span></div></div>
+</div></div><div class="qs" id="qday30">
+<div class="qsh" onclick="TQ('qday30')">
+<div class="qsl"><span style="font-size:16px">&#129504;</span>
+<span class="ql">Self-Check &mdash; Day 30 (Final)</span>
+<span class="qc">4 questions</span></div>
+<button class="qtb2">Show Quiz &#9662;</button>
+</div>
+<div class="qb"><div class="qq">
+<div class="qqu"><span class="qn">Q</span>CTO: 'We have Salesforce Einstein. Why do we need a separate AI architecture?'</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Einstein is Salesforce-native: can't access NetSuite, locked to Salesforce LLM, no custom RAG, no cross-system agents, no vendor portability, no enterprise governance controls you've designed. Mule AI layer: cross-system intelligence, model choice, governance, reusability.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Explain RAG to a non-technical executive in 30 seconds.</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Imagine you gave a brilliant analyst all our internal policies, past case history, and contracts. They answer questions by looking it up first — not guessing. RAG does that: before the AI answers, it searches your company's knowledge base, reads the most relevant information, then responds based on your real data.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>CTO: 'What's our liability if the AI makes a wrong financial decision?'</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>The architecture prevents this: (1) HITL requires human approval for all transactions above threshold, (2) schema validation rejects malformed AI output before any system write, (3) full audit trail for every decision, (4) read-only retrieval agents separated from write execution agents. The AI surfaces a recommendation; a human authorizes the action.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>If you could only implement one Phase first, which and why?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Phase 2 (RAG) — highest immediate value, lowest risk. No write operations, no agents making decisions. Proves ROI through faster case resolution and knowledge accessibility. Builds the foundation (vector DB, embedding pipeline, secure RAG) that Phases 3 and 4 depend on.</div>
+</div></div></div></div></div>
+<div class="pb2" id="phase-auth">
+<div class="ph">
+<div class="pp p5">Auth</div>
+<h2 class="ptitle">Authentication &amp; Authorization</h2>
+<span class="pdys">Enterprise Security Layer</span>
+</div><div class="ds" id="day-auth1" data-day="AUTH 01"><div class="dh"><span class="dn">AUTH 01</span>
+<h3 class="dt">LLM API Key Management</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~35 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="AUTH 01"/> Mark Complete</label></div><div class="tc" data-topic-id="tA01">
+<div class="tch" onclick="T(this)">
+<span class="tn">#A01</span>
+<span class="tname">Secure API Key Storage &amp; Rotation <span class="bnew">UPDATED</span></span>
+<div class="ta2"><button class="nb" onclick="N(event,'tA01')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-tA01"><textarea class="nt" placeholder="Your notes..." data-note="tA01" oninput="SN('tA01',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<div class="co warn"><strong>Critical Security Issue</strong> Hardcoding API keys in Mule flows, config files, or source control is a critical security vulnerability. Every enterprise deployment must use a secrets manager.</div><h4>Option 1: Anypoint Secrets Manager</h4><div class="cb3"><div class="cbh"><span class="cl">Mule — Retrieve API Key from Secrets Manager</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre><span class="cm">// mule-artifact.json / Anypoint Secrets Manager</span>
+{
+  <span class="key">"securePropsTool"</span>: {
+    <span class="key">"enabled"</span>: <span class="kw">true</span>,
+    <span class="key">"region"</span>: <span class="str">"us-east-1"</span>,
+    <span class="key">"secretGroupId"</span>: <span class="str">"${secrets.groupId}"</span>
+  }
+}
+
+<span class="cm">// In Mule XML flow — reference secret</span>
+&lt;http:request-config name="llm-api"&gt;
+  &lt;http:default-headers&gt;
+    &lt;http:header headerName="Authorization"
+      value="Bearer #[Mule::p('secrets.openai.apiKey')]"/&gt;
+  &lt;/http:default-headers&gt;
+&lt;/http:request-config&gt;</pre></div><h4>Option 2: HashiCorp Vault + Mule</h4><div class="cb3"><div class="cbh"><span class="cl">DataWeave — Vault Dynamic Secret Retrieval</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre><span class="cm">// Call Vault API to get a dynamic secret</span>
+%dw 2.0
+output application/json
+---
+{
+  role_id: Mule::p(<span class="str">"vault.roleId"</span>),
+  secret_id: Mule::p(<span class="str">"vault.secretId"</span>)
+}
+<span class="cm">// POST to http://vault:8200/v1/auth/approle/login</span>
+<span class="cm">// Returns: { auth: { client_token: "s.xyz..." } }</span>
+<span class="cm">// Use client_token to fetch: /v1/secret/data/ai/openai-key</span></pre></div><h4>API Key Rotation Strategy</h4><table class="dtbl"><thead><tr><th>Provider</th><th>Rotation Frequency</th><th>Method</th></tr></thead><tbody><tr><td>OpenAI</td><td>Every 90 days</td><td>Secrets Manager scheduled job</td></tr><tr><td>Anthropic</td><td>Every 90 days</td><td>Vault dynamic secrets</td></tr><tr><td>Azure OpenAI</td><td>Every 30 days</td><td>Azure Key Vault + Mule connector</td></tr><tr><td>Google Gemini</td><td>Every 90 days</td><td>GCP Secret Manager</td></tr></tbody></table><div class="co tip"><strong>Best Practice</strong> Never use the same API key in dev, staging, and production. Each environment gets its own key with scoped permissions and independent rotation schedules.</div><div class="rr"><a class="rl" href="https://docs.mulesoft.com/anypoint-security/secrets-manager" target="_blank">&#8599; Anypoint Secrets Manager</a><a class="rl" href="https://developer.hashicorp.com/vault" target="_blank">&#8599; HashiCorp Vault</a></div>
+</div></div><div class="qs" id="qauth1">
+<div class="qsh" onclick="TQ('qauth1')">
+<div class="qsl"><span style="font-size:16px">&#129504;</span>
+<span class="ql">Self-Check &mdash; Auth 01</span>
+<span class="qc">3 questions</span></div>
+<button class="qtb2">Show Quiz &#9662;</button>
+</div>
+<div class="qb"><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Why should LLM API keys never be stored in mule-artifact.json or application.yaml in source control?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Source control is accessible to all developers, CI/CD systems, and often third-party tools. An exposed API key can be used to: run expensive model calls at your cost, access your data via the LLM API, and depending on the provider's permissions, access other resources. Secrets must be stored in a dedicated vault with access logging and rotation.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>What is the difference between Anypoint Secrets Manager and HashiCorp Vault for Mule deployments?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Anypoint Secrets Manager: native MuleSoft integration, zero extra infrastructure, best for CloudHub-deployed Mule apps. HashiCorp Vault: vendor-agnostic, supports dynamic secrets (short-lived, auto-revoked), supports more complex policies and multi-cloud. For on-prem or hybrid Mule (Runtime Fabric/RTF), Vault is the enterprise standard.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Your LLM provider sends an email saying an API key may have been compromised. What is your incident response in the Mule AI platform?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>(1) Immediately rotate the key in your secrets manager. (2) Mule apps automatically pick up the new key on next secret refresh (TTL-based cache). (3) Review audit logs for anomalous usage in the compromise window. (4) Revoke the old key at the provider dashboard. (5) Check billing for unexpected usage spikes. (6) File internal incident report. Rotation should take < 5 minutes with a properly designed secrets management flow.</div>
+</div></div></div></div><div class="ds" id="day-auth2" data-day="AUTH 02"><div class="dh"><span class="dn">AUTH 02</span>
+<h3 class="dt">OAuth 2.0 & JWT in Mule AI Flows</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~50 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="AUTH 02"/> Mark Complete</label></div><div class="tc" data-topic-id="tA02">
+<div class="tch" onclick="T(this)">
+<span class="tn">#A02</span>
+<span class="tname">OAuth 2.0 Patterns for AI APIs <span class="bnew">UPDATED</span></span>
+<div class="ta2"><button class="nb" onclick="N(event,'tA02')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-tA02"><textarea class="nt" placeholder="Your notes..." data-note="tA02" oninput="SN('tA02',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>Authentication at Each Layer</h4><table class="dtbl"><thead><tr><th>Layer</th><th>Auth Pattern</th><th>Direction</th></tr></thead><tbody><tr><td>Experience API (inbound)</td><td>OAuth 2.0 Authorization Code / JWT Bearer</td><td>Client → Mule</td></tr><tr><td>AI Orchestration (inbound)</td><td>Client Credentials (service-to-service)</td><td>Process API → AI Orch</td></tr><tr><td>LLM API (outbound)</td><td>API Key (Bearer token)</td><td>Mule → OpenAI/Anthropic</td></tr><tr><td>Embedding API (outbound)</td><td>API Key (Bearer token)</td><td>Mule → OpenAI/Cohere</td></tr><tr><td>Vector DB (outbound)</td><td>API Key + namespace token</td><td>Mule → Pinecone/Weaviate</td></tr><tr><td>Salesforce (outbound)</td><td>OAuth 2.0 JWT Bearer</td><td>Mule → SFDC</td></tr><tr><td>NetSuite (outbound)</td><td>OAuth 1.0a / TBA</td><td>Mule → NetSuite</td></tr><tr><td>Internal Mule APIs</td><td>mTLS + Client ID Enforcement</td><td>Mule → Mule</td></tr></tbody></table><h4>OAuth 2.0 Client Credentials — Service-to-Service</h4><div class="cb3"><div class="cbh"><span class="cl">Mule — Client Credentials Flow (Internal APIs)</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre><span class="cm">// Get access token from Anypoint Access Management</span>
+POST https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&client_id=<span class="str">${secure::clientId}</span>
+&client_secret=<span class="str">${secure::clientSecret}</span>
+&audience=<span class="str">https://your-ai-orchestration-api.cloudhub.io</span>
+
+<span class="cm">// Response: { "access_token":"eyJ...", "expires_in":3600 }</span>
+<span class="cm">// Use in subsequent calls: Authorization: Bearer eyJ...</span></pre></div><h4>Salesforce — OAuth 2.0 JWT Bearer Flow</h4><div class="cb3"><div class="cbh"><span class="cl">Mule Salesforce Connector — JWT Auth</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre><span class="cm">// Salesforce connected app with JWT OAuth flow</span>
+<span class="cm">// No user interaction — machine-to-machine</span>
+
+<span class="cm">// 1. Create JWT header + claims</span>
+JWT Header: { "alg": "RS256" }
+JWT Claims: {
+  "iss": "<span class="str">your-connected-app-client-id</span>",
+  "sub": "<span class="str">integration.user@company.com</span>",
+  "aud": "<span class="str">https://login.salesforce.com</span>",
+  "exp": now() + 300  <span class="cm">// 5-minute expiry</span>
+}
+
+<span class="cm">// 2. Sign with RSA private key (stored in Secrets Manager)</span>
+<span class="cm">// 3. POST to Salesforce token endpoint</span>
+POST https://login.salesforce.com/services/oauth2/token
+grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
+&assertion=<signed-jwt>
+
+<span class="cm">// 4. Receive access_token, use for all SFDC API calls</span></pre></div><div class="rr"><a class="rl" href="https://docs.mulesoft.com/mule-runtime/latest/authorization-grant-types" target="_blank">&#8599; Anypoint OAuth 2.0</a><a class="rl" href="https://help.salesforce.com/s/articleView?id=sf.remoteaccess_oauth_jwt_flow.htm&type=5" target="_blank">&#8599; SFDC JWT OAuth</a></div>
+</div></div><div class="qs" id="qauth2">
+<div class="qsh" onclick="TQ('qauth2')">
+<div class="qsl"><span style="font-size:16px">&#129504;</span>
+<span class="ql">Self-Check &mdash; Auth 02</span>
+<span class="qc">3 questions</span></div>
+<button class="qtb2">Show Quiz &#9662;</button>
+</div>
+<div class="qb"><div class="qq">
+<div class="qqu"><span class="qn">Q</span>When should you use Authorization Code flow vs Client Credentials flow in a Mule AI integration?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Authorization Code: when a human user's identity matters (e.g., the AI assistant acts on behalf of a specific logged-in user, needs their Salesforce permissions). Client Credentials: service-to-service calls where no human user is involved (e.g., a batch AI processing job, an internal Mule-to-Mule call). Most AI orchestration internals use Client Credentials; the Experience API may use Authorization Code for user-facing features.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Why use JWT Bearer over username/password OAuth for Salesforce integration in a production Mule app?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>JWT Bearer: no user credential storage, asymmetric cryptography (private key signs, Salesforce verifies with public key), short-lived tokens (5 min), no interactive login needed, easily automated, fully auditable. Username/password OAuth is deprecated by Salesforce for production and stores user credentials in config.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>The AI Orchestration API needs to call both the LLM (API Key) and Salesforce (OAuth 2.0 JWT). How do you manage both in Mule without credential leakage?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Store both credentials in Anypoint Secrets Manager or Vault. For LLM: reference secret as HTTP connector header value using Mule::p('secrets.llm.apiKey'). For Salesforce: use the Mule Salesforce connector's JWT auth configuration referencing the RSA private key from secrets manager. Neither key appears in source code, configs, or logs. The secrets manager handles rotation; the Mule app picks up refreshed values via TTL cache.</div>
+</div></div></div></div><div class="ds" id="day-auth3" data-day="AUTH 03"><div class="dh"><span class="dn">AUTH 03</span>
+<h3 class="dt">JWT Validation, RBAC & Scopes</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~45 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="AUTH 03"/> Mark Complete</label></div><div class="tc" data-topic-id="tA03">
+<div class="tch" onclick="T(this)">
+<span class="tn">#A03</span>
+<span class="tname">JWT Validation &amp; Role-Based Access Control <span class="bnew">UPDATED</span></span>
+<div class="ta2"><button class="nb" onclick="N(event,'tA03')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-tA03"><textarea class="nt" placeholder="Your notes..." data-note="tA03" oninput="SN('tA03',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>Inbound JWT Validation in Mule</h4><div class="cb3"><div class="cbh"><span class="cl">Mule — JWT Validation Policy (Anypoint Platform)</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre><span class="cm">// Applied as API Policy in API Manager</span>
+<span class="cm">// No code needed — declarative policy</span>
+
+JWT Validation Policy Config:
+  JWT Signing Method: RSA
+  JWT Signing Key Length: 256
+  JWKS URL: https://your-idp.com/.well-known/jwks.json
+  Expected Audience: https://ai-api.company.com
+  Expected Issuer: https://idp.company.com
+  Validate Claims: true
+  Token Expiry: true
+
+<span class="cm">// Mule automatically rejects requests with:</span>
+<span class="cm">// - Missing/invalid Authorization header</span>
+<span class="cm">// - Expired token (exp claim)</span>
+<span class="cm">// - Wrong audience or issuer</span>
+<span class="cm">// - Invalid signature</span></pre></div><h4>Extracting Claims for RBAC in DataWeave</h4><div class="cb3"><div class="cbh"><span class="cl">DataWeave — Extract Roles from JWT for RAG Filtering</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre>%dw 2.0
+output application/json
+<span class="cm">// JWT claims are exposed by Mule JWT policy as attributes</span>
+<span class="kw">var</span> jwtClaims = attributes.headers.authorization
+  <span class="kw">replace</span> <span class="str">"Bearer "</span> <span class="kw">with</span> <span class="str">""</span>
+  then $ splitBy <span class="str">"."</span>
+  then $[1]
+  then fromBase64($)
+  then read($, <span class="str">"application/json"</span>)
+
+<span class="cm">// Or use Mule JWT policy auto-injected variables:</span>
+<span class="kw">var</span> userId = vars.claimSet.sub
+<span class="kw">var</span> userRoles = vars.claimSet.roles
+<span class="kw">var</span> department = vars.claimSet.department
+<span class="kw">var</span> clearanceLevel = vars.claimSet.clearance_level <span class="kw">default</span> <span class="num">1</span>
+---
+{
+  <span class="cm">// Build vector DB metadata filter from JWT claims</span>
+  vectorFilter: {
+    department: { <span class="str">"$eq"</span>: department },
+    clearance: { <span class="str">"$lte"</span>: clearanceLevel }
+  },
+  <span class="cm">// Which tools this user can call</span>
+  allowedTools: <span class="kw">if</span> (userRoles <span class="kw">contains</span> <span class="str">"FINANCE_MANAGER"</span>)
+    [<span class="str">"get_invoice"</span>, <span class="str">"apply_credit"</span>, <span class="str">"update_case"</span>]
+  <span class="kw">else if</span> (userRoles <span class="kw">contains</span> <span class="str">"SUPPORT_AGENT"</span>)
+    [<span class="str">"get_case"</span>, <span class="str">"update_case"</span>]
+  <span class="kw">else</span>
+    [<span class="str">"get_case"</span>]  <span class="cm">// read-only fallback</span>
+}</pre></div><h4>Scope-Based Tool Authorization</h4><table class="dtbl"><thead><tr><th>JWT Scope / Role</th><th>Allowed AI Tools</th><th>RAG Access Level</th></tr></thead><tbody><tr><td>ai:read</td><td>get_case, search_kb</td><td>Public KB only</td></tr><tr><td>ai:write</td><td>+ update_case</td><td>Department docs</td></tr><tr><td>ai:finance</td><td>+ get_invoice, apply_credit (≤$250)</td><td>Finance docs</td></tr><tr><td>ai:finance:admin</td><td>+ apply_credit (any amount)</td><td>All finance docs</td></tr><tr><td>ai:admin</td><td>All tools</td><td>All namespaces</td></tr></tbody></table><div class="co warn"><strong>Security Rule</strong> Tool authorization must be enforced in Mule, not trusted from the LLM. The LLM may hallucinate tool calls to tools it shouldn't have access to. Mule validates the allowed tools list before executing any tool call.</div><div class="rr"><a class="rl" href="https://docs.mulesoft.com/api-manager/latest/jwt-validation-policy-documentation" target="_blank">&#8599; Anypoint JWT Policy</a><a class="rl" href="https://owasp.org/www-community/attacks/Broken_Access_Control" target="_blank">&#8599; OWASP — Broken Access Control</a></div>
+</div></div><div class="qs" id="qauth3">
+<div class="qsh" onclick="TQ('qauth3')">
+<div class="qsl"><span style="font-size:16px">&#129504;</span>
+<span class="ql">Self-Check &mdash; Auth 03</span>
+<span class="qc">3 questions</span></div>
+<button class="qtb2">Show Quiz &#9662;</button>
+</div>
+<div class="qb"><div class="qq">
+<div class="qqu"><span class="qn">Q</span>An LLM agent calls the 'apply_credit' tool but the user's JWT only has 'ai:read' scope. What should Mule do?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Mule must reject the tool call immediately before it reaches any Process API — return HTTP 403 Forbidden to the agent, log the unauthorized tool call attempt (potential security event), and optionally trigger an alert. The agent should receive a structured error: { 'error': 'UNAUTHORIZED_TOOL', 'tool': 'apply_credit', 'requiredScope': 'ai:finance' } so it can inform the user appropriately.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Why must tool authorization be enforced in Mule rather than relying on the LLM to self-restrict?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>LLMs can hallucinate, be manipulated via prompt injection to call unauthorized tools, or be updated with changed behavior. Mule enforcing authorization at the API layer is a deterministic, cryptographically-grounded control. The LLM is an untrusted component from a security perspective — all its actions must be validated by the governance layer.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Your JWT includes a 'clearance_level: 3' claim. How does this integrate with your RAG vector database query?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>The clearance level is extracted from the JWT claims in DataWeave and used as a metadata filter in the vector DB query: { clearance: { '$lte': 3 } }. This ensures the similarity search only returns document chunks tagged with clearance level 1, 2, or 3. Documents tagged clearance: 4 or 5 are never returned regardless of semantic similarity. This is enforced pre-retrieval, not post-retrieval.</div>
+</div></div></div></div><div class="ds" id="day-auth4" data-day="AUTH 04"><div class="dh"><span class="dn">AUTH 04</span>
+<h3 class="dt">mTLS & API Key Enforcement</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~40 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="AUTH 04"/> Mark Complete</label></div><div class="tc" data-topic-id="tA04">
+<div class="tch" onclick="T(this)">
+<span class="tn">#A04</span>
+<span class="tname">mTLS for Internal Mule APIs &amp; API Key Enforcement <span class="bnew">UPDATED</span></span>
+<div class="ta2"><button class="nb" onclick="N(event,'tA04')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-tA04"><textarea class="nt" placeholder="Your notes..." data-note="tA04" oninput="SN('tA04',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>mTLS (Mutual TLS) for Internal Service Communication</h4><div class="cb3"><div class="cbh"><span class="cl">Mule TLS Context — mTLS Configuration</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre><span class="cm">&lt;!-- In Mule XML — TLS Context for internal calls --&gt;</span>
+&lt;tls:context name="mutualTlsContext"&gt;
+  &lt;tls:trust-store
+    path="certs/trusted-cas.jks"
+    password="${secure::truststore.password}"
+    type="JKS"/&gt;
+  &lt;tls:key-store
+    path="certs/mule-service.p12"
+    keyPassword="${secure::keystore.keyPassword}"
+    password="${secure::keystore.password}"
+    type="PKCS12"/&gt;
+&lt;/tls:context&gt;
+
+<span class="cm">&lt;!-- Applied to HTTP listener (server side) --&gt;</span>
+&lt;http:listener-config name="secureListener"&gt;
+  &lt;http:listener-connection
+    host="0.0.0.0" port="8443"
+    tlsContext="mutualTlsContext"
+    clientAuthentication="REQUIRED"/&gt;
+&lt;/http:listener-config&gt;
+
+<span class="cm">&lt;!-- Applied to HTTP request (client side) --&gt;</span>
+&lt;http:request-config name="processApiClient"&gt;
+  &lt;http:request-connection
+    host="${process.api.host}" port="8443"
+    tlsContext="mutualTlsContext"/&gt;
+&lt;/http:request-config&gt;</pre></div><h4>Anypoint Client ID Enforcement Policy</h4><div class="cb3"><div class="cbh"><span class="cl">API Manager — Client ID Enforcement</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre><span class="cm">// Applied declaratively in API Manager — no code required</span>
+
+Policy: Client ID Enforcement
+  Client ID Expression:  #[attributes.headers['client_id']]
+  Client Secret Expression: #[attributes.headers['client_secret']]
+  HTTP Response Code (no credentials): 401
+  HTTP Response Code (invalid credentials): 403
+
+<span class="cm">// Each internal Mule app gets a unique Client Application</span>
+<span class="cm">// registered in Anypoint Exchange with approved API access</span>
+<span class="cm">// AI Orchestration App → Process API Client App → System API</span></pre></div><h4>Authentication Decision Matrix</h4><table class="dtbl"><thead><tr><th>Scenario</th><th>Recommended Auth</th><th>Why</th></tr></thead><tbody><tr><td>External user → Experience API</td><td>OAuth 2.0 Authorization Code + PKCE</td><td>User identity, consent, short-lived tokens</td></tr><tr><td>Internal Mule → Mule (same CloudHub)</td><td>Client ID Enforcement + mTLS</td><td>Service-to-service, no user involved</td></tr><tr><td>Mule → LLM API (OpenAI/Anthropic)</td><td>API Key in Secrets Manager</td><td>Provider requirement, rotate every 90 days</td></tr><tr><td>Mule → Salesforce</td><td>OAuth 2.0 JWT Bearer</td><td>No credential storage, short-lived tokens</td></tr><tr><td>Mule → NetSuite</td><td>OAuth 1.0a Token-Based Auth (TBA)</td><td>NetSuite standard, HMAC-signed requests</td></tr><tr><td>Mule → Vector DB (Pinecone)</td><td>API Key + namespace token</td><td>Provider requirement</td></tr><tr><td>Agent tool call → Process API</td><td>JWT Bearer (propagated from user)</td><td>Maintain user identity through agent loop</td></tr></tbody></table><div class="co tip"><strong>Identity Propagation in Agent Loops</strong> When the AI agent calls tools, the original user's JWT must be propagated through the tool call chain to Process APIs and System APIs. This ensures: RBAC is applied at each layer, audit logs capture the real user identity (not just the service account), and Salesforce / NetSuite record changes are attributed to the correct user.</div><div class="rr"><a class="rl" href="https://docs.mulesoft.com/mule-runtime/latest/tls-configuration" target="_blank">&#8599; Mule TLS Configuration</a><a class="rl" href="https://docs.mulesoft.com/api-manager/latest/client-id-based-policies" target="_blank">&#8599; Client ID Enforcement Policy</a></div>
+</div></div><div class="qs" id="qauth4">
+<div class="qsh" onclick="TQ('qauth4')">
+<div class="qsl"><span style="font-size:16px">&#129504;</span>
+<span class="ql">Self-Check &mdash; Auth 04</span>
+<span class="qc">3 questions</span></div>
+<button class="qtb2">Show Quiz &#9662;</button>
+</div>
+<div class="qb"><div class="qq">
+<div class="qqu"><span class="qn">Q</span>What is the difference between TLS and mTLS, and when do you need mTLS in a Mule architecture?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Standard TLS: server proves its identity to the client (one-way — client verifies server cert). mTLS: both sides present and verify certificates (mutual — server also verifies client cert). Use mTLS for: internal Mule-to-Mule calls where you want cryptographic proof of service identity, not just a shared secret. Especially important for System APIs handling Salesforce or NetSuite where an unauthorized internal caller should be rejected.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Why propagate the user's JWT through the AI agent tool call chain rather than using a service account for all downstream calls?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>If all tool calls use a single service account: (1) audit logs show 'service_account updated NetSuite' not 'alice@company.com updated NetSuite', (2) RBAC at Process/System API layer can't distinguish user permissions, (3) a compromised service account can perform any action any user can. Propagating the JWT: preserves user identity in audit trails, enforces user-level RBAC at every layer, limits blast radius of a compromised session.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Your Mule System API for NetSuite uses OAuth 1.0a Token-Based Authentication. What credentials must you manage and where should they be stored?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>OAuth 1.0a TBA requires: (1) Consumer Key and Consumer Secret (from NetSuite's connected app), (2) Token ID and Token Secret (generated per integration user). All four must be stored in Anypoint Secrets Manager or Vault — never in mule-app.properties or source control. HMAC-SHA256 signature is computed per request using these credentials. Rotate Token ID/Secret every 90 days via NetSuite admin.</div>
+</div></div></div></div><div class="ds" id="day-auth5" data-day="AUTH 05"><div class="dh"><span class="dn">AUTH 05</span>
+<h3 class="dt">Token Refresh & Session Security</h3>
+<span class="cb2">&#10003; Done</span></div>
+<div class="dm"><span class="rt">&#9201; ~35 min</span>
+<label class="dc"><input type="checkbox" class="dchk" data-day="AUTH 05"/> Mark Complete</label></div><div class="tc" data-topic-id="tA05">
+<div class="tch" onclick="T(this)">
+<span class="tn">#A05</span>
+<span class="tname">Token Lifecycle, Refresh &amp; Session Security <span class="bnew">UPDATED</span></span>
+<div class="ta2"><button class="nb" onclick="N(event,'tA05')" title="Add note">&#128221;</button></div>
+<span class="tg">&#9662;</span>
+</div>
+<div class="tb">
+<div class="na" id="note-tA05"><textarea class="nt" placeholder="Your notes..." data-note="tA05" oninput="SN('tA05',this.value)"></textarea><div class="nf"><span>&#128190; Auto-saved</span></div></div>
+<h4>Token Refresh Pattern in Mule</h4><div class="cb3"><div class="cbh"><span class="cl">DataWeave — Proactive Token Refresh</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre>%dw 2.0
+output application/json
+<span class="cm">// Check if cached token is about to expire (5-min buffer)</span>
+<span class="kw">var</span> cachedToken = vars.sfAccessToken
+<span class="kw">var</span> tokenExpiry = vars.sfTokenExpiry as Number
+<span class="kw">var</span> nowEpoch = (now() as Number { unit: "milliseconds" }) / 1000
+<span class="kw">var</span> needsRefresh = cachedToken == <span class="kw">null</span>
+  <span class="kw">or</span> (tokenExpiry - nowEpoch) &lt; <span class="num">300</span>
+---
+{ refreshRequired: needsRefresh }</pre></div><div class="cb3"><div class="cbh"><span class="cl">Mule Flow — Token Refresh with Object Store Cache</span>
+<button class="cpb" onclick="CP(this)">Copy</button></div>
+<pre>Flow: token-cache-flow
+  1. [Object Store GET] key="sfdc-token"
+  2. [DataWeave] check expiry (5-min buffer)
+  3. [Choice Router]
+     - IF refresh needed:
+       a. [HTTP] POST to SFDC token endpoint (JWT Bearer)
+       b. [DataWeave] extract token + compute expiry
+       c. [Object Store PUT] key="sfdc-token", TTL=3500s
+     - ELSE: use cached token
+  4. Set vars.accessToken = token
+  5. Continue to downstream call</pre></div><h4>Session Security Checklist</h4><table class="dtbl"><thead><tr><th>Control</th><th>Implementation</th><th>Priority</th></tr></thead><tbody><tr><td>Short token TTL</td><td>Access tokens: 1 hour max</td><td>Critical</td></tr><tr><td>Token cache encryption</td><td>Encrypt Object Store cache at rest</td><td>Critical</td></tr><tr><td>No tokens in logs</td><td>Mask Authorization headers in Mule logger</td><td>Critical</td></tr><tr><td>PKCE for auth code flow</td><td>Prevent auth code interception attacks</td><td>High</td></tr><tr><td>State parameter validation</td><td>Prevent CSRF in OAuth redirects</td><td>High</td></tr><tr><td>Refresh token rotation</td><td>Rotate refresh tokens on each use</td><td>High</td></tr><tr><td>Token binding</td><td>Bind tokens to client TLS cert (mTLS)</td><td>Medium</td></tr></tbody></table><div class="co warn"><strong>Never Log Tokens</strong> Add 'Authorization' header to Mule's logger masking list. A token in a log line is an exploitable credential. Use promptHash (SHA-256) in audit logs, never the actual token or API key value.</div><div class="rr"><a class="rl" href="https://www.rfc-editor.org/rfc/rfc9700" target="_blank">&#8599; OAuth 2.0 Security Best Practices RFC 9700</a><a class="rl" href="https://docs.mulesoft.com/object-store/" target="_blank">&#8599; Mule Object Store</a><a class="rl" href="https://datatracker.ietf.org/doc/html/rfc7636" target="_blank">&#8599; PKCE RFC 7636</a></div>
+</div></div><div class="qs" id="qauth5">
+<div class="qsh" onclick="TQ('qauth5')">
+<div class="qsl"><span style="font-size:16px">&#129504;</span>
+<span class="ql">Self-Check &mdash; Auth 05</span>
+<span class="qc">2 questions</span></div>
+<button class="qtb2">Show Quiz &#9662;</button>
+</div>
+<div class="qb"><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Why use a 5-minute buffer when checking token expiry rather than waiting until the token actually expires?</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Network latency + processing time in Mule can cause a token to expire mid-request. If you fetch a fresh token only when the current one is expired, a request in-flight during the expiry moment will fail with 401. The 5-minute buffer ensures you proactively refresh before expiry, eliminating this race condition in production.</div>
+</div><div class="qq">
+<div class="qqu"><span class="qn">Q</span>Describe the risk if access tokens are cached unencrypted in Mule Object Store.</div>
+<button class="rb" onclick="RA(this)">Reveal Answer</button>
+<div class="qa"><strong>Answer</strong>Unencrypted Object Store contents can be: read by other Mule apps in the same environment, accessed via Anypoint Runtime Manager if compromised, included in thread dumps or heap dumps. An attacker with access to the runtime environment can extract valid access tokens to impersonate your Mule application against Salesforce, NetSuite, or LLM providers. Encrypt the cache; use Anypoint Secure Properties or Vault for the encryption key.</div>
+</div></div></div></div></div>
+</main>
+<button id="bt" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593; Top</button>
+
+<!-- ═══════════════════════════════════════════
+     AUTH OVERLAY — Login / Signup / Forgot PW
+═══════════════════════════════════════════ -->
+<style>
+#auth-overlay{position:fixed;inset:0;background:#0b0d14;display:flex;align-items:center;justify-content:center;z-index:9999;backdrop-filter:blur(4px)}
+.auth-box{background:#12141f;padding:36px 40px;border-radius:14px;width:400px;text-align:center;border:1px solid #252840;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.auth-logo{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-teal);margin-bottom:6px}
+.auth-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--text-bright);margin-bottom:22px}
+.auth-title.warn{color:var(--accent-amber)}
+.auth-input,.auth-select{width:100%;padding:11px 14px;margin-bottom:10px;background:#080a10;border:1px solid #252840;color:var(--text-bright);border-radius:7px;font-family:'JetBrains Mono',monospace;font-size:13px;outline:none;transition:border-color .2s;display:block}
+.auth-input:focus,.auth-select:focus{border-color:var(--accent-teal)}
+.auth-input::placeholder{color:#6b6f8a}
+.auth-select option{background:#12141f}
+.auth-btn{width:100%;padding:12px;border:none;border-radius:7px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;font-size:13px;letter-spacing:.05em;margin-top:6px;transition:opacity .2s,transform .1s}
+.auth-btn:hover{opacity:.9;transform:translateY(-1px)}
+.auth-btn:disabled{background:#252840!important;color:#6b6f8a!important;cursor:not-allowed;transform:none}
+.auth-btn.primary{background:var(--accent-teal);color:#0b0d14}
+.auth-btn.amber{background:var(--accent-amber);color:#0b0d14}
+.auth-divider{display:flex;align-items:center;gap:10px;margin:14px 0}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:#252840}
+.auth-divider span{font-family:'JetBrains Mono',monospace;font-size:11px;color:#6b6f8a}
+.auth-link{display:block;margin-top:12px;font-size:12px;color:#6b6f8a;cursor:pointer;font-family:'Syne',sans-serif;transition:color .15s}
+.auth-link:hover{color:var(--accent-teal)}
+.auth-links-row{display:flex;justify-content:space-between;margin-top:10px}
+.auth-error{color:#f87171;font-size:12px;margin-top:10px;min-height:18px;font-family:'JetBrains Mono',monospace}
+.auth-success{color:var(--accent-teal);font-size:12px;margin-top:10px;font-family:'JetBrains Mono',monospace}
+.auth-field-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6b6f8a;text-align:left;display:block;margin-bottom:4px;margin-top:8px}
+.auth-spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:6px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hidden{display:none!important}
+</style>
+
+<div id="auth-overlay">
+  <div class="auth-box">
+    <div class="auth-logo">AI + MuleSoft Training</div>
+
+    <!-- ── LOGIN VIEW ── -->
+    <div id="login-view">
+      <div class="auth-title">Nexus Login</div>
+      <label class="auth-field-label">Email</label>
+      <input id="login-email" class="auth-input" placeholder="you@company.com" autocomplete="username"/>
+      <label class="auth-field-label">Password</label>
+      <input id="login-pass" class="auth-input" type="password" placeholder="••••••••" autocomplete="current-password"/>
+      <button id="btn-login" class="auth-btn primary" disabled><span class="auth-spinner"></span>Connecting…</button>
+      <div class="auth-links-row">
+        <span class="auth-link" id="link-to-signup">Create an account</span>
+        <span class="auth-link" id="link-to-forgot">Forgot password?</span>
+      </div>
+    </div>
+
+    <!-- ── SIGNUP VIEW ── -->
+    <div id="signup-view" class="hidden">
+      <div class="auth-title">Create Account</div>
+      <label class="auth-field-label">Username</label>
+      <input id="signup-user" class="auth-input" placeholder="Your name"/>
+      <label class="auth-field-label">Email</label>
+      <input id="signup-email" class="auth-input" placeholder="you@company.com" autocomplete="username"/>
+      <label class="auth-field-label">Password</label>
+      <input id="signup-pass" class="auth-input" type="password" placeholder="Min 6 characters" autocomplete="new-password"/>
+      <label class="auth-field-label">Security Question</label>
+      <select id="signup-question" class="auth-select">
+        <option value="" disabled selected>Select a question…</option>
+        <option>What was the name of your first pet?</option>
+        <option>What is your mother's maiden name?</option>
+        <option>What was the name of your first school?</option>
+        <option>In what city were you born?</option>
+        <option>What is your favourite book?</option>
+      </select>
+      <label class="auth-field-label">Answer</label>
+      <input id="signup-answer" class="auth-input" placeholder="Answer (case-insensitive)"/>
+      <button id="btn-signup" class="auth-btn primary">Create Account</button>
+      <span class="auth-link" id="link-signup-to-login">Already have an account? Sign in</span>
+    </div>
+
+    <!-- ── FORGOT PASSWORD VIEW ── -->
+    <div id="forgot-view" class="hidden">
+      <div class="auth-title warn">Reset Password</div>
+
+      <!-- Step 1: enter email -->
+      <div id="forgot-step-1">
+        <label class="auth-field-label">Your Email</label>
+        <input id="forgot-email" class="auth-input" placeholder="you@company.com"/>
+        <button id="btn-forgot-find" class="auth-btn amber">Find Account</button>
+      </div>
+
+      <!-- Step 2: answer security question -->
+      <div id="forgot-step-2" class="hidden">
+        <p id="display-question" style="font-size:13px;color:var(--text);margin-bottom:14px;font-style:italic;text-align:left"></p>
+        <label class="auth-field-label">Your Answer</label>
+        <input id="forgot-answer" class="auth-input" placeholder="Answer"/>
+        <button id="btn-forgot-verify" class="auth-btn amber">Verify Answer</button>
+      </div>
+
+      <!-- Step 3: set new password -->
+      <div id="forgot-step-3" class="hidden">
+        <label class="auth-field-label">New Password</label>
+        <input id="new-pass" class="auth-input" type="password" placeholder="Min 6 characters" autocomplete="new-password"/>
+        <button id="btn-forgot-update" class="auth-btn primary">Update Password</button>
+      </div>
+
+      <span class="auth-link" id="link-forgot-to-login">← Back to Login</span>
+    </div>
+
+    <p id="auth-error" class="auth-error"></p>
+    <p id="auth-success" class="auth-success hidden"></p>
+  </div>
+</div>
+
+<!-- ── FIREBASE AUTH SCRIPT ── -->
+<script type="module">
+import { initializeApp }           from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged }
+                                    from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc }
+                                    from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+// ── CONFIG ──────────────────────────────────────
+const firebaseConfig = typeof __firebase_config !== 'undefined'
+  ? JSON.parse(__firebase_config)
+  : { apiKey:"demo", authDomain:"demo", projectId:"demo" };
+
+const appId = typeof __app_id !== 'undefined' ? __app_id : 'ai-mulesoft-training';
+
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db   = getFirestore(app);
+
+// ── HELPERS ─────────────────────────────────────
+const $  = id => document.getElementById(id);
+const registryRef = email => doc(db, 'artifacts', appId, 'public', 'data', 'registry', email);
+
+const showErr = msg => {
+  $('auth-error').textContent = msg;
+  $('auth-success').classList.add('hidden');
+};
+const showOk = msg => {
+  $('auth-success').textContent = msg;
+  $('auth-success').classList.remove('hidden');
+  $('auth-error').textContent = '';
+};
+const clearMessages = () => { $('auth-error').textContent = ''; $('auth-success').classList.add('hidden'); };
+
+const switchView = id => {
+  ['login-view','signup-view','forgot-view'].forEach(v => $( v).classList.add('hidden'));
+  $(id).classList.remove('hidden');
+  clearMessages();
+};
+
+const dismissOverlay = () => { $('auth-overlay').style.display = 'none'; };
+
+// ── FIREBASE AUTH INIT ───────────────────────────
+let fbReady = false;
+
+const initFB = async () => {
+  try {
+    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+      await signInWithCustomToken(auth, __initial_auth_token);
+    } else {
+      await signInAnonymously(auth);
+    }
+  } catch(e) {
+    console.warn('Firebase anonymous auth:', e);
+    // Degrade gracefully — still allow localStorage-based login
+    enableLoginBtn();
+  }
+};
+
+const enableLoginBtn = () => {
+  fbReady = true;
+  const btn = $('btn-login');
+  btn.disabled = false;
+  btn.innerHTML = 'Sign In';
+  btn.className = 'auth-btn primary';
+};
+
+onAuthStateChanged(auth, user => {
+  enableLoginBtn();
+  // Auto-dismiss if valid session already exists
+  const session = localStorage.getItem('nexus_session');
+  if (user && session) dismissOverlay();
+});
+
+initFB();
+
+// Also allow login even if Firebase is slow
+setTimeout(enableLoginBtn, 4000);
+
+// ── DEFAULT TRAINING ACCOUNT ─────────────────────
+const DEFAULT = {
+  email: 'rghv@training.com',
+  password: 'Training@123',
+  username: 'rghv',
+  question: 'In what city were you born?',
+  answer: 'bangalore'
+};
+
+// ── LOGIN ────────────────────────────────────────
+const handleLogin = async () => {
+  const email    = $('login-email').value.toLowerCase().trim();
+  const password = $('login-pass').value;
+  if (!email || !password) return showErr('Both fields are required.');
+
+  const btn = $('btn-login');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="auth-spinner"></span>Signing in…';
+
+  try {
+    // Default training account shortcut
+    if (email === DEFAULT.email && password === DEFAULT.password) {
+      try {
+        const ref = registryRef(email);
+        const snap = await getDoc(ref);
+        if (!snap.exists()) await setDoc(ref, DEFAULT);
+      } catch(_) { /* offline / demo mode — skip Firestore */ }
+      localStorage.setItem('nexus_session', email);
+      return dismissOverlay();
+    }
+
+    // Regular account lookup
+    const snap = await getDoc(registryRef(email));
+    if (snap.exists() && snap.data().password === password) {
+      localStorage.setItem('nexus_session', email);
+      dismissOverlay();
+    } else {
+      showErr('Invalid email or password.');
+    }
+  } catch(err) {
+    console.error(err);
+    showErr('Connection error. Try again.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'Sign In';
+  }
+};
+
+// ── SIGNUP ───────────────────────────────────────
+const handleSignup = async () => {
+  const username = $('signup-user').value.trim();
+  const email    = $('signup-email').value.toLowerCase().trim();
+  const password = $('signup-pass').value;
+  const question = $('signup-question').value;
+  const answer   = $('signup-answer').value.toLowerCase().trim();
+
+  if (!username || !email || !password || !question || !answer)
+    return showErr('All fields are required.');
+  if (password.length < 6)
+    return showErr('Password must be at least 6 characters.');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+    return showErr('Enter a valid email address.');
+
+  const btn = $('btn-signup');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="auth-spinner"></span>Creating account…';
+
+  try {
+    const ref  = registryRef(email);
+    const snap = await getDoc(ref);
+    if (snap.exists()) return showErr('An account with this email already exists.');
+
+    await setDoc(ref, { username, email, password, question, answer,
+                        createdAt: new Date().toISOString() });
+    localStorage.setItem('nexus_session', email);
+    showOk('Account created! Welcome, ' + username + '.');
+    setTimeout(dismissOverlay, 1200);
+  } catch(err) {
+    console.error(err);
+    showErr('Signup failed. Check your connection and try again.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'Create Account';
+  }
+};
+
+// ── FORGOT PASSWORD — STEP 1: find account ───────
+let forgotEmail = '';
+const handleForgotFind = async () => {
+  const email = $('forgot-email').value.toLowerCase().trim();
+  if (!email) return showErr('Enter your email address.');
+
+  const btn = $('btn-forgot-find');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="auth-spinner"></span>Searching…';
+
+  try {
+    const snap = await getDoc(registryRef(email));
+    if (!snap.exists()) return showErr('No account found for that email.');
+
+    forgotEmail = email;
+    $('display-question').textContent = '🔒 ' + snap.data().question;
+    $('forgot-step-1').classList.add('hidden');
+    $('forgot-step-2').classList.remove('hidden');
+    clearMessages();
+  } catch(err) {
+    showErr('Could not look up account. Try again.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'Find Account';
+  }
+};
+
+// ── FORGOT PASSWORD — STEP 2: verify answer ──────
+const handleForgotVerify = async () => {
+  const answer = $('forgot-answer').value.toLowerCase().trim();
+  if (!answer) return showErr('Enter your answer.');
+
+  const btn = $('btn-forgot-verify');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="auth-spinner"></span>Verifying…';
+
+  try {
+    const snap = await getDoc(registryRef(forgotEmail));
+    if (!snap.exists()) return showErr('Account not found.');
+
+    if (snap.data().answer.toLowerCase().trim() !== answer)
+      return showErr('Incorrect answer. Try again.');
+
+    $('forgot-step-2').classList.add('hidden');
+    $('forgot-step-3').classList.remove('hidden');
+    clearMessages();
+  } catch(err) {
+    showErr('Verification failed. Try again.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'Verify Answer';
+  }
+};
+
+// ── FORGOT PASSWORD — STEP 3: update password ────
+const handleForgotUpdate = async () => {
+  const newPwd = $('new-pass').value;
+  if (!newPwd || newPwd.length < 6)
+    return showErr('Password must be at least 6 characters.');
+
+  const btn = $('btn-forgot-update');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="auth-spinner"></span>Updating…';
+
+  try {
+    await updateDoc(registryRef(forgotEmail), { password: newPwd });
+    showOk('Password updated! You can now sign in.');
+    setTimeout(() => {
+      // Reset forgot flow state
+      forgotEmail = '';
+      $('forgot-step-1').classList.remove('hidden');
+      $('forgot-step-2').classList.add('hidden');
+      $('forgot-step-3').classList.add('hidden');
+      $('forgot-email').value = '';
+      $('forgot-answer').value = '';
+      $('new-pass').value = '';
+      switchView('login-view');
+    }, 1800);
+  } catch(err) {
+    showErr('Update failed. Try again.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'Update Password';
+  }
+};
+
+// ── EVENT WIRING ─────────────────────────────────
+$('btn-login').addEventListener('click', handleLogin);
+$('btn-signup').addEventListener('click', handleSignup);
+$('btn-forgot-find').addEventListener('click', handleForgotFind);
+$('btn-forgot-verify').addEventListener('click', handleForgotVerify);
+$('btn-forgot-update').addEventListener('click', handleForgotUpdate);
+
+$('link-to-signup').addEventListener('click', () => switchView('signup-view'));
+$('link-to-forgot').addEventListener('click', () => switchView('forgot-view'));
+$('link-signup-to-login').addEventListener('click', () => switchView('login-view'));
+$('link-forgot-to-login').addEventListener('click', () => {
+  forgotEmail = '';
+  $('forgot-step-1').classList.remove('hidden');
+  $('forgot-step-2').classList.add('hidden');
+  $('forgot-step-3').classList.add('hidden');
+  switchView('login-view');
+});
+
+// Enter key support
+['login-email','login-pass'].forEach(id => {
+  $(id).addEventListener('keydown', e => { if (e.key === 'Enter') handleLogin(); });
+});
+$('signup-answer').addEventListener('keydown', e => { if (e.key === 'Enter') handleSignup(); });
+$('forgot-answer').addEventListener('keydown', e => { if (e.key === 'Enter') handleForgotVerify(); });
+$('new-pass').addEventListener('keydown', e => { if (e.key === 'Enter') handleForgotUpdate(); });
+</script>
+<script>
+const S={get:k=>{try{return JSON.parse(localStorage.getItem(k))}catch{return null}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}}};
+function TH(){const c=document.documentElement.getAttribute('data-theme'),n=c==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);S.set('theme',n)}
+(function(){const s=S.get('theme');if(s)document.documentElement.setAttribute('data-theme',s)})();
+function TS(){document.getElementById('sidebar').classList.toggle('mobile-open');document.getElementById('so').classList.toggle('visible')}
+function CS(){document.getElementById('sidebar').classList.remove('mobile-open');document.getElementById('so').classList.remove('visible')}
+function T(h){h.closest('.tc').classList.toggle('open')}
+function TQ(id){const s=document.getElementById(id);s.classList.toggle('open');const b=s.querySelector('.qtb2');b.textContent=s.classList.contains('open')?'Hide Quiz \u25B4':'Show Quiz \u25BE'}
+function RA(btn){const a=btn.nextElementSibling;a.classList.toggle('visible');btn.textContent=a.classList.contains('visible')?'\u25B4 Hide Answer':'Reveal Answer'}
+function N(e,id){e.stopPropagation();document.getElementById('note-'+id).classList.toggle('open')}
+function SN(id,v){const n=S.get('ai_notes')||{};n[id]=v;S.set('ai_notes',n);const b=document.querySelector('[onclick*="\'' +id+ '\'"].nb');if(b)b.classList.toggle('has-note',v.trim().length>0)}
+function LN(){const n=S.get('ai_notes')||{};Object.entries(n).forEach(([id,v])=>{const t=document.querySelector('[data-note="'+id+'"]');if(t&&v){t.value=v;const b=document.querySelector('[onclick*="\'' +id+ '\'"].nb');if(b)b.classList.add('has-note')}})}
+function LP(){const p=S.get('ai_prog')||{};const cb=document.querySelectorAll('.dchk');let done=0;cb.forEach(c=>{const d=c.dataset.day;c.checked=!!p[d];const lbl=c.closest('.dc'),sec=document.querySelector('.ds[data-day="'+d+'"]'),sl=document.querySelector('.sl[data-day="'+d+'"]');if(c.checked){done++;lbl&&lbl.classList.add('completed');sec&&sec.classList.add('completed');sl&&sl.classList.add('done')}else{lbl&&lbl.classList.remove('completed');sec&&sec.classList.remove('completed');sl&&sl.classList.remove('done')}});const t=cb.length,pct=t?Math.round(done/t*100):0;document.getElementById('pf').style.width=pct+'%';document.getElementById('pl').textContent=done+' / '+t+' days \u00B7 '+pct+'%'}
+document.addEventListener('change',e=>{if(e.target.classList.contains('dchk')){const p=S.get('ai_prog')||{};p[e.target.dataset.day]=e.target.checked;S.set('ai_prog',p);LP()}});
+let origContent=new Map();
+function storeOrig(){document.querySelectorAll('.tb').forEach(b=>{if(!origContent.has(b))origContent.set(b,b.innerHTML)})}
+function hlText(html,q){if(!q)return html;const e=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');return html.replace(new RegExp('('+e+')','gi'),'<mark class="sm">$1</mark>')}
+document.getElementById('si').addEventListener('input',function(){storeOrig();const q=this.value.toLowerCase().trim();origContent.forEach((h,b)=>{b.innerHTML=h});let any=false;document.querySelectorAll('.tc').forEach(c=>{const t=c.textContent.toLowerCase();if(!q||t.includes(q)){c.classList.remove('sh2');if(q){c.classList.add('open');const b=c.querySelector('.tb');if(b)b.innerHTML=hlText(b.innerHTML,q)}any=true}else c.classList.add('sh2')});document.querySelectorAll('.ds').forEach(s=>{const v=[...s.querySelectorAll('.tc')].some(c=>!c.classList.contains('sh2'));s.style.display=(!q||v)?'':'none'});document.getElementById('nr').style.display=(q&&!any)?'block':'none'});
+function OG(){document.getElementById('gp').classList.add('open');document.getElementById('go').style.display='block'}
+function CG(){document.getElementById('gp').classList.remove('open');document.getElementById('go').style.display='none'}
+function CP(btn){const p=btn.closest('.cb3').querySelector('pre');navigator.clipboard.writeText(p.innerText).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy',1800)})}
+let cdi=0;
+document.addEventListener('keydown',e=>{const t=e.target.tagName.toLowerCase();if(['input','textarea'].includes(t)){if(e.key==='Escape')e.target.blur();return}if(e.key==='/'){{e.preventDefault();document.getElementById('si').focus()}}else if(e.key==='Escape'){document.getElementById('si').value='';document.getElementById('si').dispatchEvent(new Event('input'));CG()}else if(e.key==='g'||e.key==='G')OG();else if(e.key==='j'||e.key==='J'){e.preventDefault();const d=[...document.querySelectorAll('.ds')].filter(s=>s.style.display!=='none');cdi=Math.min(cdi+1,d.length-1);d[cdi].scrollIntoView({behavior:'smooth',block:'start'})}else if(e.key==='k'||e.key==='K'){e.preventDefault();const d=[...document.querySelectorAll('.ds')].filter(s=>s.style.display!=='none');cdi=Math.max(cdi-1,0);d[cdi].scrollIntoView({behavior:'smooth',block:'start'})}});
+window.addEventListener('scroll',()=>{const doc=document.documentElement,sc=doc.scrollTop,tot=doc.scrollHeight-doc.clientHeight;document.getElementById('pb').style.width=(sc/tot*100)+'%';document.getElementById('bt').classList.toggle('visible',sc>400);let ai=null;document.querySelectorAll('.ds').forEach(s=>{if(s.getBoundingClientRect().top<=130)ai=s.id});document.querySelectorAll('.sl').forEach(l=>{l.classList.toggle('active',l.getAttribute('href')==='#'+ai)})});
+LP();LN();
+document.querySelectorAll('.ds').forEach(s=>{const f=s.querySelector('.tc');if(f)f.classList.add('open')});
+</script>
+</body></html>
